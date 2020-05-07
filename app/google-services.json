@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "804341054849",
+    "firebase_url": "https://everyday-solutions.firebaseio.com",
+    "project_id": "everyday-solutions",
+    "storage_bucket": "everyday-solutions.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804341054849:android:7b003af91d7117265dbc80",
+        "android_client_info": {
+          "package_name": "com.bguneys.app652020"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "804341054849-onbpuos1tmk76adhfidj55fru6q7k5q5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe3imVcPygKQkTZ-_CHTuWX98D2h_AmL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804341054849-onbpuos1tmk76adhfidj55fru6q7k5q5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

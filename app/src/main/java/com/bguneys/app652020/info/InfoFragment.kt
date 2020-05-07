@@ -1,4 +1,4 @@
-package com.bguneys.app652020.conversion
+package com.bguneys.app652020.info
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,16 +12,16 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class ConversionFragment : Fragment() {
+class InfoFragment : Fragment() {
 
     lateinit var mTextView : TextView
-    var mUserList : List<User>? = null
+    var mList : List<User>? = null
 
     lateinit var compositeDisposible : CompositeDisposable
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val view : View = inflater.inflate(R.layout.fragment_conversion, container, false)
+        val view : View = inflater.inflate(R.layout.fragment_info, container, false)
 
         mTextView = view.findViewById(R.id.result_textView)
 
@@ -32,8 +32,10 @@ class ConversionFragment : Fragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({response ->
-                    mUserList = response
-                    mTextView.setText(mUserList?.get(2)?.name)
+                    mList = response
+
+                    mTextView.setText(mList?.get(1)?.name)
+                    //Toast.makeText(activity, response.toString(), Toast.LENGTH_SHORT).show()
 
                 }, {failure ->
                     Toast.makeText(activity, "Error: " + failure.message, Toast.LENGTH_SHORT).show()
