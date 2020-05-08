@@ -27,6 +27,9 @@ class MainFragment : Fragment() {
             findNavController().navigate(R.id.action_mainFragment_to_infoFragment)
         }
 
+        binding.noteButton.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_folderListFragment)
+        }
 
     }
 
