@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = Constants.NOTE_TABLE_NAME)
 data class Folder (
-    @ColumnInfo(name = Constants.COLUMN_ITEM_ID)
+    @ColumnInfo(name = Constants.COLUMN_RECORD_ID)
     @PrimaryKey(autoGenerate = true)
-    var itemId : Int = 0,
+    var recordId : Int = 0,
 
     @ColumnInfo(name = Constants.COLUMN_FOLDER_TITLE)
     var folderTitle : String = "",

@@ -2,6 +2,8 @@ package com.bguneys.app652020.database
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class ProjectRepository (
     val context: Context?
@@ -35,11 +37,15 @@ class ProjectRepository (
     }
 
     suspend fun insert(folder : Folder) {
-        folderDao.insert(folder)
+        withContext(Dispatchers.IO) {
+            folderDao.insert(folder)
+        }
     }
 
     suspend fun update(folder : Folder) {
-        folderDao.update(folder)
+        withContext(Dispatchers.IO) {
+            folderDao.update(folder)
+        }
     }
 
     suspend fun delete(folder : Folder) {

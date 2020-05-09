@@ -15,7 +15,7 @@ interface FolderDao {
     @Delete
     suspend fun delete(folder : Folder)
 
-    @Query("SELECT DISTINCT folder_title FROM notes_table")
+    @Query("SELECT * FROM notes_table GROUP BY folder_title")
     fun getFolderList() : LiveData<List<Folder>>
 
     @Query("SELECT * FROM notes_table WHERE folder_title = :folderTitle")

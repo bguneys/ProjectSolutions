@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bguneys.app652020.database.Folder
 import com.bguneys.app652020.database.ProjectRepository
 
 import com.bguneys.app652020.databinding.FragmentFolderListBinding
@@ -25,19 +27,27 @@ class FolderListFragment : Fragment() {
         val noteViewModelFactory = NoteViewModelFactory(mRepository)
         val noteViewModel = ViewModelProvider(this, noteViewModelFactory).get(NoteViewModel::class.java)
 
+        //val folder = Folder(folderTitle = "Market", noteTitle = "Title",noteText = "Note")
+        //noteViewModel.insert(folder)
+
+        val adapter = FolderRecyclerViewAdapter()
+
         noteViewModel.folderList.observe(viewLifecycleOwner, Observer { list ->
-            binding.folderListTextView.setText(list.toString())
+            adapter.folderList = list
         })
+
+        binding.folderListRecyclerView.adapter = adapter
+        binding.folderListRecyclerView.layoutManager = LinearLayoutManager(activity)
 
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+/*    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         //binding.folderListTextView.setText("Hello")
 
-    }
+    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()
