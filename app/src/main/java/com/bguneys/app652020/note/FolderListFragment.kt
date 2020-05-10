@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bguneys.app652020.database.Folder
 import com.bguneys.app652020.database.ProjectRepository
@@ -30,7 +32,12 @@ class FolderListFragment : Fragment() {
         //val folder = Folder(folderTitle = "Market", noteTitle = "Title",noteText = "Note")
         //noteViewModel.insert(folder)
 
-        val adapter = FolderRecyclerViewAdapter()
+        val adapter = FolderRecyclerViewAdapter(FolderRecyclerViewAdapter.FolderClickListener {
+
+            val action = FolderListFragmentDirections.actionFolderListFragmentToNoteListFragment(it)
+            findNavController().navigate(action)
+
+        })
 
         noteViewModel.folderList.observe(viewLifecycleOwner, Observer { list ->
             adapter.folderList = list
@@ -41,13 +48,6 @@ class FolderListFragment : Fragment() {
 
         return binding.root
     }
-
-/*    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        //binding.folderListTextView.setText("Hello")
-
-    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()

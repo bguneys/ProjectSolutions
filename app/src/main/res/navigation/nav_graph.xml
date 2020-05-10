@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_mainFragment_to_folderListFragment"
             app:destination="@id/folderListFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_noteListFragment"
+            app:destination="@id/noteListFragment" />
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
@@ -25,5 +28,18 @@
         android:id="@+id/folderListFragment"
         android:name="com.bguneys.app652020.note.FolderListFragment"
         android:label="fragment_folder_list"
-        tools:layout="@layout/fragment_folder_list" />
+        tools:layout="@layout/fragment_folder_list" >
+        <action
+            android:id="@+id/action_folderListFragment_to_noteListFragment"
+            app:destination="@id/noteListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteListFragment"
+        android:name="com.bguneys.app652020.note.NoteListFragment"
+        android:label="fragment_note_list"
+        tools:layout="@layout/fragment_note_list" >
+        <argument
+            android:name="selectedFolderTitle"
+            app:argType="string" />
+    </fragment>
 </navigation>

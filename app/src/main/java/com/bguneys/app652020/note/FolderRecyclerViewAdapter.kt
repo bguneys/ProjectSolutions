@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bguneys.app652020.R
 import com.bguneys.app652020.database.Folder
 
-class FolderRecyclerViewAdapter : RecyclerView.Adapter<FolderRecyclerViewAdapter.ViewHolder>() {
+class FolderRecyclerViewAdapter(val clickListener : FolderClickListener) : RecyclerView.Adapter<FolderRecyclerViewAdapter.ViewHolder>() {
 
     var folderList = listOf<Folder>()
         set(value) {
@@ -20,8 +20,11 @@ class FolderRecyclerViewAdapter : RecyclerView.Adapter<FolderRecyclerViewAdapter
 
         val folderTitle : TextView = itemView.findViewById(R.id.folder_title_textView)
 
-        fun bind(item : Folder) {
-            folderTitle.text = item.folderTitle
+        fun bind(folder : Folder, clickListener : FolderClickListener) {
+            folderTitle.text = folder.folderTitle
+            itemView.setOnClickListener {
+                clickListener.onClick(folder)
+            }
         }
 
         companion object {
@@ -41,9 +44,13 @@ class FolderRecyclerViewAdapter : RecyclerView.Adapter<FolderRecyclerViewAdapter
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = folderList[position]
-        holder.bind(item)
+        holder.bind(item, clickListener)
     }
 
     override fun getItemCount(): Int = folderList.size
+
+    class FolderClickListener(val clickListener : (folderTitle : String) -> Unit) {
+        fun onClick(folder : Folder) = clickListener(folder.folderTitle)
+    }
 
 }

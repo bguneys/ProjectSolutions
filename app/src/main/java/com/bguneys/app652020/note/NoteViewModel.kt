@@ -18,6 +18,10 @@ class NoteViewModel (
 
     val folderList : LiveData<List<Folder>> = repository.folderList
 
+    fun getFolderByName(folderTitle : String) : LiveData<List<Folder>> {
+        return repository.getFolderByName(folderTitle)
+    }
+
     fun update(folder : Folder) {
         uiScope.launch {
             repository.update(folder)
