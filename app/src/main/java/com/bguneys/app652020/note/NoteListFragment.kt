@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 
-import com.bguneys.app652020.R
 import com.bguneys.app652020.database.ProjectRepository
 import com.bguneys.app652020.databinding.FragmentNoteListBinding
 
@@ -28,9 +28,12 @@ class NoteListFragment : Fragment() {
         val noteViewModelFactory = NoteViewModelFactory(mRepository)
         val noteViewModel = ViewModelProvider(this, noteViewModelFactory).get(NoteViewModel::class.java)
 
-        val adapter = NoteRecyclerViewAdapter()
+        val adapter = NoteRecyclerViewAdapter(NoteRecyclerViewAdapter.NoteClickListener{
+            val action = NoteListFragmentDirections.actionNoteListFragmentToNoteFragment(it, args.selectedFolderTitle)
+            findNavController().navigate(action)
+        })
 
-        noteViewModel.getFolderByName(args.selectedFolderTitle).observe(viewLifecycleOwner, Observer { list ->
+        noteViewModel.getFolderByTitle(args.selectedFolderTitle).observe(viewLifecycleOwner, Observer { list ->
             adapter.noteList = list
         })
 

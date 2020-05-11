@@ -1,6 +1,5 @@
 package com.bguneys.app652020.note
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.bguneys.app652020.database.Folder
@@ -18,8 +17,12 @@ class NoteViewModel (
 
     val folderList : LiveData<List<Folder>> = repository.folderList
 
-    fun getFolderByName(folderTitle : String) : LiveData<List<Folder>> {
-        return repository.getFolderByName(folderTitle)
+    fun getFolderByTitle(folderTitle : String) : LiveData<List<Folder>> {
+        return repository.getFolderByTitle(folderTitle)
+    }
+
+    fun getFolderByFolderTitleAndNoteTitle(folderTitle: String, noteTitle : String) : LiveData<Folder> {
+        return repository.getFolderByFolderTitleAndNoteTitle(folderTitle, noteTitle)
     }
 
     fun update(folder : Folder) {

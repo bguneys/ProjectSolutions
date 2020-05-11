@@ -9,19 +9,23 @@ import com.bguneys.app652020.R
 import com.bguneys.app652020.database.Folder
 
 
-class NoteRecyclerViewAdapter : RecyclerView.Adapter<NoteRecyclerViewAdapter.ViewHolder>() {
+class NoteRecyclerViewAdapter(val clickListener : NoteClickListener) : RecyclerView.Adapter<NoteRecyclerViewAdapter.ViewHolder>() {
 
     var noteList = listOf<Folder>()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
     class ViewHolder private constructor(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
-        val notetitle : TextView = itemView.findViewById(R.id.note_title_textView)
+        val noteTitle : TextView = itemView.findViewById(R.id.note_title_textView)
 
-        fun bind(item : Folder) {
-            notetitle.text = item.noteTitle
+        fun bind(folder : Folder, clickListener : NoteClickListener) {
+            noteTitle.text = folder.noteTitle
+            itemView.setOnClickListener {
+                clickListener.onClick(folder)
+            }
         }
 
         companion object {
@@ -40,9 +44,13 @@ class NoteRecyclerViewAdapter : RecyclerView.Adapter<NoteRecyclerViewAdapter.Vie
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = noteList[position]
-        holder.bind(item)
+        holder.bind(item, clickListener)
     }
 
     override fun getItemCount(): Int = noteList.size
+
+    class NoteClickListener(val clickListener : (noteTitle : String) -> Unit) {
+        fun onClick(folder : Folder) = clickListener(folder.noteTitle)
+    }
 
 }

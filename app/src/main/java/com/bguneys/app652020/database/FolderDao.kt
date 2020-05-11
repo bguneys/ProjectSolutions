@@ -19,6 +19,9 @@ interface FolderDao {
     fun getFolderList() : LiveData<List<Folder>>
 
     @Query("SELECT * FROM notes_table WHERE folder_title = :folderTitle")
-    fun getFolderByName(folderTitle : String) : LiveData<List<Folder>>
+    fun getFolderByTitle(folderTitle : String) : LiveData<List<Folder>>
+
+    @Query("SELECT * FROM notes_table WHERE folder_title=:folderTitle AND note_title=:noteTitle")
+    fun getFolderByFolderTitleAndNoteTitle(folderTitle: String, noteTitle : String) : LiveData<Folder>
 
 }

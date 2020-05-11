@@ -32,8 +32,12 @@ class ProjectRepository (
 
     val folderList : LiveData<List<Folder>> = folderDao.getFolderList()
 
-    fun getFolderByName(folderTitle : String) : LiveData<List<Folder>> {
-        return folderDao.getFolderByName(folderTitle)
+    fun getFolderByTitle(folderTitle : String) : LiveData<List<Folder>> {
+        return folderDao.getFolderByTitle(folderTitle)
+    }
+
+    fun getFolderByFolderTitleAndNoteTitle(folderTitle: String, noteTitle : String) : LiveData<Folder> {
+        return folderDao.getFolderByFolderTitleAndNoteTitle(folderTitle, noteTitle)
     }
 
     suspend fun insert(folder : Folder) {
