@@ -4,29 +4,8 @@
     tools:context="com.bguneys.app652020.MainActivity">
 
     <item
-        android:id="@+id/folderListFragment"
-        android:orderInCategory="100"
-        android:title="Note Taker"
-        android:icon="@drawable/ic_launcher_foreground"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/plannerFragment"
-        android:orderInCategory="200"
-        android:title="Planner"
-        android:icon="@drawable/ic_launcher_foreground"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/infoFragment"
-        android:orderInCategory="300"
-        android:title="Info"
-        android:icon="@drawable/ic_launcher_foreground"
-        app:showAsAction="always" />
-
-    <item
         android:id="@+id/action_settings"
-        android:orderInCategory="400"
+        android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
 
