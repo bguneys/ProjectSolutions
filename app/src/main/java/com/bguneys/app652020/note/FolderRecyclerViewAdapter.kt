@@ -49,8 +49,8 @@ class FolderRecyclerViewAdapter(val clickListener : FolderClickListener) : Recyc
 
     override fun getItemCount(): Int = folderList.size
 
-    class FolderClickListener(val clickListener : (folderTitle : String) -> Unit) {
-        fun onClick(folder : Folder) = clickListener(folder.folderTitle)
+    class FolderClickListener(val clickListener : (folder : Folder) -> Unit) {
+        fun onClick(folder : Folder) = clickListener(folder)
     }
 
 }

@@ -18,6 +18,7 @@ import com.bguneys.app652020.databinding.FragmentFolderListBinding
 
 class FolderListFragment : Fragment() {
 
+    //ViewBinding backing property
     private var _binding : FragmentFolderListBinding? = null
     private val binding
         get() = _binding!!
@@ -29,22 +30,28 @@ class FolderListFragment : Fragment() {
         val noteViewModelFactory = NoteViewModelFactory(mRepository)
         val noteViewModel = ViewModelProvider(this, noteViewModelFactory).get(NoteViewModel::class.java)
 
-        //val folder = Folder(folderTitle = "Market", noteTitle = "Title",noteText = "Note")
-        //noteViewModel.insert(folder)
-
         val adapter = FolderRecyclerViewAdapter(FolderRecyclerViewAdapter.FolderClickListener {
 
-            val action = FolderListFragmentDirections.actionFolderListFragmentToNoteListFragment(it)
+            //Sending folder title and Folder record Id via action while navigating to NoteListFragment
+            val action = FolderListFragmentDirections.actionFolderListFragmentToNoteListFragment(it.folderTitle, it.recordId)
             findNavController().navigate(action)
 
         })
 
+        //Showing most recent list of folders
         noteViewModel.folderList.observe(viewLifecycleOwner, Observer { list ->
             adapter.folderList = list
         })
 
         binding.folderListRecyclerView.adapter = adapter
         binding.folderListRecyclerView.layoutManager = LinearLayoutManager(activity)
+
+        //Adding new folder to the database
+        binding.fabAddFolder.setOnClickListener {
+            val newFolderTitle = binding.editTextFolderTitle.text.toString()
+            val newFolder = Folder(folderTitle = newFolderTitle, noteTitle = null, noteText = null)
+            noteViewModel.insert(newFolder)
+        }
 
         return binding.root
     }

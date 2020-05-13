@@ -14,8 +14,8 @@ data class Folder (
     var folderTitle : String = "",
 
     @ColumnInfo(name = Constants.COLUMN_NOTE_TITLE)
-    var noteTitle : String = "",
+    var noteTitle : String?,
 
     @ColumnInfo(name = Constants.COLUMN_NOTE_TEXT)
-    var noteText : String = ""
+    var noteText : String?
 )

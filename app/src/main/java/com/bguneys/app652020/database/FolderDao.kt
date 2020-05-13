@@ -6,7 +6,7 @@ import androidx.room.*
 @Dao
 interface FolderDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(folder : Folder)
 
     @Update
@@ -18,7 +18,7 @@ interface FolderDao {
     @Query("SELECT * FROM notes_table GROUP BY folder_title")
     fun getFolderList() : LiveData<List<Folder>>
 
-    @Query("SELECT * FROM notes_table WHERE folder_title = :folderTitle")
+    @Query("SELECT * FROM notes_table WHERE folder_title = :folderTitle AND note_title IS NOT NULL")
     fun getFolderByTitle(folderTitle : String) : LiveData<List<Folder>>
 
     @Query("SELECT * FROM notes_table WHERE folder_title=:folderTitle AND note_title=:noteTitle")

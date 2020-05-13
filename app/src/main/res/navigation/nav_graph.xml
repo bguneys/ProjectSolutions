@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_noteListFragment_to_noteFragment"
             app:destination="@id/noteFragment" />
+        <argument
+            android:name="SelectedFolderId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/noteFragment"
@@ -53,5 +56,8 @@
         <argument
             android:name="selectedFolderTitle"
             app:argType="string" />
+        <argument
+            android:name="SelectedFolderId"
+            app:argType="integer" />
     </fragment>
 </navigation>

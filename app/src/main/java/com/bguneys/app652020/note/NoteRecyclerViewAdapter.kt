@@ -49,8 +49,8 @@ class NoteRecyclerViewAdapter(val clickListener : NoteClickListener) : RecyclerV
 
     override fun getItemCount(): Int = noteList.size
 
-    class NoteClickListener(val clickListener : (noteTitle : String) -> Unit) {
-        fun onClick(folder : Folder) = clickListener(folder.noteTitle)
+    class NoteClickListener(val clickListener : (folder : Folder) -> Unit) {
+        fun onClick(folder : Folder) = clickListener(folder)
     }
 
 }
