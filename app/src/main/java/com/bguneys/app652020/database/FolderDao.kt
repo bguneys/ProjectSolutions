@@ -7,13 +7,13 @@ import androidx.room.*
 interface FolderDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(folder : Folder)
+    suspend fun insert(folder : Folder)
 
     @Update
-    fun update(folder : Folder)
+    suspend fun update(folder : Folder)
 
     @Delete
-    fun delete(folder : Folder)
+    suspend fun delete(folder : Folder)
 
     @Query("SELECT * FROM notes_table GROUP BY folder_title")
     fun getFolderList() : LiveData<List<Folder>>
@@ -25,7 +25,7 @@ interface FolderDao {
     fun getFolderByFolderTitleAndNoteTitle(folderTitle: String, noteTitle : String) : LiveData<Folder>
 
     @Query("DELETE FROM notes_table WHERE folder_title=:folderTitle AND note_title=:noteTitle")
-    fun deleteByFolderTitleAndNoteTitle(folderTitle: String, noteTitle : String)
+    suspend fun deleteByFolderTitleAndNoteTitle(folderTitle: String, noteTitle : String)
 
 
 }

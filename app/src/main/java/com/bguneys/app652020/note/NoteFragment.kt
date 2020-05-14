@@ -1,13 +1,19 @@
 package com.bguneys.app652020.note
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.bguneys.app652020.R
 import com.bguneys.app652020.database.Folder
@@ -31,11 +37,36 @@ class NoteFragment : Fragment() {
 
         setHasOptionsMenu(true) //required to add new menu
 
+        //Showing confirmation dialog message by applying custom back navigation
+        val callback = requireActivity().onBackPressedDispatcher
+            .addCallback(this) {
+
+                //show dialog to ask for saving changes before quit
+                val dialogBuilder = AlertDialog.Builder(requireContext())
+                dialogBuilder.setMessage("Save changes?")
+                    .setCancelable(false)
+                    .setPositiveButton("Save", { dialog, id ->
+                        saveTheNote() //custom method for updating the current note
+                        findNavController().navigateUp()
+                    })
+                    .setNegativeButton("No", { dialog, id ->
+                        dialog.dismiss() //do nothing and dismiss the dialog
+                        findNavController().navigateUp()
+                    })
+
+                val alert = dialogBuilder.create()
+                alert.show()
+            }
+
+        callback.isEnabled
+
+
         //get arguments from NoteListFragment
         args = NoteFragmentArgs.fromBundle(requireArguments())
 
         //change toolbar label to note title
         (activity as AppCompatActivity).supportActionBar?.setTitle(args.selectedNoteTitle)
+
 
         val mRepository = ProjectRepository(this.activity?.applicationContext)
         val noteViewModelFactory = NoteViewModelFactory(mRepository)
@@ -58,26 +89,19 @@ class NoteFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
+            android.R.id.home -> {
+                requireActivity().onBackPressedDispatcher.onBackPressed()
+                return true
+            }
+
             R.id.action_save_note -> {
-                //Saving text to the selected note
-                val newNoteText = binding.editTextNoteText.text.toString()
-
-                val newFolder = Folder(recordId = args.SelectedFolderId,
-                    folderTitle = args.selectedFolderTitle,
-                    noteTitle = args.selectedNoteTitle,
-                    noteText = newNoteText)
-
-                noteViewModel.update(newFolder)
-
+                saveTheNote() //custom method for updating the current note
                 Toast.makeText(activity, "Note saved", Toast.LENGTH_SHORT).show()
-
                 return true
             }
 
             else -> return super.onOptionsItemSelected(item)
         }
-
-
     }
 
     override fun onDestroyView() {
@@ -85,4 +109,20 @@ class NoteFragment : Fragment() {
         _binding = null
     }
 
+
+    /**
+     * Custom method for updating the current note text
+     */
+    fun saveTheNote() {
+        val newNoteText = binding.editTextNoteText.text.toString()
+
+        val newFolder = Folder(recordId = args.SelectedFolderId,
+            folderTitle = args.selectedFolderTitle,
+            noteTitle = args.selectedNoteTitle,
+            noteText = newNoteText)
+
+        noteViewModel.update(newFolder)
+    }
+
 }
+

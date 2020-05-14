@@ -1,6 +1,6 @@
 package com.bguneys.app652020.note
 
-import android.app.Activity
+import androidx.appcompat.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
@@ -10,8 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -94,9 +92,24 @@ class FolderListFragment : Fragment() {
 
             // Called when a ViewHolder is swiped by the user. Used for swipe to delete functionality
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                val selectedFolder = adapter.folderList.get(position)
-                noteViewModel.delete(selectedFolder)
+
+                //show dialog to ensure deleting folder
+                val dialogBuilder = AlertDialog.Builder(context!!)
+                dialogBuilder.setMessage("Delete folder?")
+                    .setCancelable(false)
+                    .setPositiveButton("Delete", { dialog, id ->
+                        //delete folder
+                        val position = viewHolder.adapterPosition
+                        val selectedFolder = adapter.folderList.get(position)
+                        noteViewModel.delete(selectedFolder)
+                    })
+                    .setNegativeButton("Cancel", { dialog, id ->
+                        dialog.dismiss() //do nothing and dismiss the dialog
+                        adapter.notifyDataSetChanged() //revert swipe action when cancelled
+                    })
+
+                val alert = dialogBuilder.create()
+                alert.show()
             }
         }
 
