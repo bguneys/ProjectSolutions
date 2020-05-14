@@ -40,6 +40,12 @@ class ProjectRepository (
         return folderDao.getFolderByFolderTitleAndNoteTitle(folderTitle, noteTitle)
     }
 
+    suspend fun deleteByFolderTitleAndNoteTitle(folderTitle: String, noteTitle : String) {
+        withContext(Dispatchers.IO) {
+            folderDao.deleteByFolderTitleAndNoteTitle(folderTitle, noteTitle)
+        }
+    }
+
     suspend fun insert(folder : Folder) {
         withContext(Dispatchers.IO) {
             folderDao.insert(folder)

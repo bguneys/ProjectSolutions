@@ -25,6 +25,12 @@ class NoteViewModel (
         return repository.getFolderByFolderTitleAndNoteTitle(folderTitle, noteTitle)
     }
 
+    fun deleteByFolderTitleAndNoteTitle(folderTitle: String, noteTitle : String) {
+        uiScope.launch {
+            repository.deleteByFolderTitleAndNoteTitle(folderTitle, noteTitle)
+        }
+    }
+
     fun update(folder : Folder) {
         uiScope.launch {
             repository.update(folder)
@@ -34,6 +40,12 @@ class NoteViewModel (
     fun insert(folder : Folder) {
         uiScope.launch {
             repository.insert(folder)
+        }
+    }
+
+    fun delete(folder : Folder) {
+        uiScope.launch {
+            repository.delete(folder)
         }
     }
 

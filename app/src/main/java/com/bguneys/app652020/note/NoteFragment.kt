@@ -31,7 +31,11 @@ class NoteFragment : Fragment() {
 
         setHasOptionsMenu(true) //required to add new menu
 
+        //get arguments from NoteListFragment
         args = NoteFragmentArgs.fromBundle(requireArguments())
+
+        //change toolbar label to note title
+        (activity as AppCompatActivity).supportActionBar?.setTitle(args.selectedNoteTitle)
 
         val mRepository = ProjectRepository(this.activity?.applicationContext)
         val noteViewModelFactory = NoteViewModelFactory(mRepository)

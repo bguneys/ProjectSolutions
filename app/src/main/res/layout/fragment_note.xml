@@ -20,6 +20,7 @@
             android:id="@+id/editText_noteText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/design_default_color_background"
             android:ems="10"
             android:gravity="top|start"
             android:hint="Type here"

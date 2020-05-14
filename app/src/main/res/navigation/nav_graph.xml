@@ -24,8 +24,8 @@
     <fragment
         android:id="@+id/folderListFragment"
         android:name="com.bguneys.app652020.note.FolderListFragment"
-        android:label="fragment_folder_list"
-        tools:layout="@layout/fragment_folder_list" >
+        android:label="Folder List"
+        tools:layout="@layout/fragment_folder_list">
         <action
             android:id="@+id/action_folderListFragment_to_noteListFragment"
             app:destination="@id/noteListFragment" />
