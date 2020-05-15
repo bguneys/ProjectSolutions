@@ -81,7 +81,6 @@ class FolderListFragment : Fragment() {
                 val newFolder =
                     Folder(folderTitle = newFolderTitle, noteTitle = null, noteText = null)
                 noteViewModel.insert(newFolder)
-                Log.i("FolderListFragment", "Folder added")
             }
 
             //hide soft keyboard after FAB click
@@ -135,6 +134,7 @@ class FolderListFragment : Fragment() {
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(binding.folderListRecyclerView)
 
+        // Inflate the layout for this fragment
         return binding.root
     }
 

@@ -92,7 +92,6 @@ class NoteListFragment : Fragment() {
                     noteText = "Type your note here.."
                 )
                 noteViewModel.insert(newFolder)
-                Log.i("NoteListFragment", "Folder added")
             }
 
             //hide soft keyboard after FAB click

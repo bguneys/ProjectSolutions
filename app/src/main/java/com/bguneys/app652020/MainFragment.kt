@@ -31,6 +31,10 @@ class MainFragment : Fragment() {
             findNavController().navigate(R.id.action_mainFragment_to_folderListFragment)
         }
 
+        binding.noteListButton.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_plannerFragment)
+        }
+
 
     }
 

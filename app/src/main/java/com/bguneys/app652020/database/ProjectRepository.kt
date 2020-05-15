@@ -29,7 +29,6 @@ class ProjectRepository (
         folderDao = projectDatabase.folderDao
     }
 
-
     val folderList : LiveData<List<Folder>> = folderDao.getFolderList()
 
     fun getFolderByTitle(folderTitle : String) : LiveData<List<Folder>> {

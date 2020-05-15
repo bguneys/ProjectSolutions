@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_mainFragment_to_folderListFragment"
             app:destination="@id/folderListFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_plannerFragment"
+            app:destination="@id/plannerFragment" />
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
@@ -60,4 +63,9 @@
             android:name="SelectedFolderId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/plannerFragment"
+        android:name="com.bguneys.app652020.planner.PlannerFragment"
+        android:label="Planner"
+        tools:layout="@layout/fragment_planner" />
 </navigation>

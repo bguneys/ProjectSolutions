@@ -1,4 +1,4 @@
-package com.bguneys.app652020.note
+package com.bguneys.app652020.planner
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bguneys.app652020.R
-import com.bguneys.app652020.database.Folder
+import com.bguneys.app652020.database.Plan
 
-class FolderRecyclerViewAdapter(val clickListener : FolderClickListener) : RecyclerView.Adapter<FolderRecyclerViewAdapter.ViewHolder>() {
+class PlanRecyclerViewAdapter(val clickListener : PlanClickListener)
+    : RecyclerView.Adapter<PlanRecyclerViewAdapter.ViewHolder>() {
 
-    var folderList = listOf<Folder>()
+    var planList = listOf<Plan>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -18,24 +19,28 @@ class FolderRecyclerViewAdapter(val clickListener : FolderClickListener) : Recyc
 
     class ViewHolder private constructor(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
-        val folderTitle : TextView = itemView.findViewById(R.id.folder_title_textView)
+        val planTitle : TextView = itemView.findViewById(R.id.plan_title_textView)
 
-        fun bind(folder : Folder, clickListener : FolderClickListener) {
-            folderTitle.text = folder.folderTitle
+        fun bind(plan : Plan, clickListener : PlanClickListener) {
+            planTitle.text = plan.planTitle
             itemView.setOnClickListener {
-                clickListener.onClick(folder)
+                clickListener.onClick(plan)
             }
         }
 
         companion object {
             fun from(parent : ViewGroup) : ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.folder_list_item, parent, false)
+                val view = layoutInflater.inflate(R.layout.planner_list_item, parent, false)
 
                 return ViewHolder(view)
             }
         }
 
+    }
+
+    class PlanClickListener(val clickListener : (plan : Plan) -> Unit) {
+        fun onClick(plan : Plan) = clickListener(plan)
     }
 
     /**
@@ -64,8 +69,8 @@ class FolderRecyclerViewAdapter(val clickListener : FolderClickListener) : Recyc
      *
      * @param position The position of the item within the adapter's data set.
      */
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = folderList[position]
+    override fun onBindViewHolder(holder: PlanRecyclerViewAdapter.ViewHolder, position: Int) {
+        val item = planList[position]
         holder.bind(item, clickListener)
     }
 
@@ -74,10 +79,7 @@ class FolderRecyclerViewAdapter(val clickListener : FolderClickListener) : Recyc
      *
      * @return The total number of items in this adapter.
      */
-    override fun getItemCount(): Int = folderList.size
+    override fun getItemCount(): Int = planList.size
 
-    class FolderClickListener(val clickListener : (folder : Folder) -> Unit) {
-        fun onClick(folder : Folder) = clickListener(folder)
-    }
 
 }
