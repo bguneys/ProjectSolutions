@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -55,14 +56,32 @@ class FolderListFragment : Fragment() {
         //Adding new folder to the database
         binding.fabAddFolder.setOnClickListener {
 
+            var isFolderTitleSuitable : Boolean = true
+
+            //check if there is a folder with same name. If yes then show a warning message
+            for (folder in adapter.folderList) {
+                if(folder.folderTitle.equals(binding.editTextFolderTitle.text.toString())) {
+                    isFolderTitleSuitable = false
+                    Toast.makeText(activity,
+                        "Folder with title ${binding.editTextFolderTitle.text} already available.",
+                        Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
             //check if folder title is given. If not then show a warning message
             if (TextUtils.isEmpty(binding.editTextFolderTitle.text.toString())) {
+                isFolderTitleSuitable = false
                 Toast.makeText(activity, "Please type title for folder", Toast.LENGTH_SHORT).show()
-            } else {
+            }
+
+            //if folder title is suitable then add the folder to the database
+            if (isFolderTitleSuitable) {
                 val newFolderTitle = binding.editTextFolderTitle.text.toString()
                 val newFolder =
                     Folder(folderTitle = newFolderTitle, noteTitle = null, noteText = null)
                 noteViewModel.insert(newFolder)
+                Log.i("FolderListFragment", "Folder added")
             }
 
             //hide soft keyboard after FAB click

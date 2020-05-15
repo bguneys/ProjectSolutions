@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -63,10 +64,27 @@ class NoteListFragment : Fragment() {
         //Adding new note to the database
         binding.fabAddNote.setOnClickListener {
 
-            //check if folder title is given. If not then show a warning message
+            var isNoteTitleSuitable : Boolean = true
+
+            //check if there is a note with same name. If yes then show a warning message
+            for (folder in adapter.noteList) {
+                if(folder.noteTitle.equals(binding.editTextNoteTitle.text.toString())) {
+                    isNoteTitleSuitable = false
+                    Toast.makeText(activity,
+                        "Note with title ${binding.editTextNoteTitle.text} already available.",
+                        Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+            //check if note title is given. If not then show a warning message
             if (TextUtils.isEmpty(binding.editTextNoteTitle.text.toString())) {
+                isNoteTitleSuitable = false
                 Toast.makeText(activity, "Please type title for note", Toast.LENGTH_SHORT).show()
-            } else {
+            }
+
+            //if note title is suitable then add the note to the database
+            if (isNoteTitleSuitable) {
                 val newNoteTitle = binding.editTextNoteTitle.text.toString()
                 val newFolder = Folder(
                     folderTitle = args.selectedFolderTitle,
@@ -74,6 +92,7 @@ class NoteListFragment : Fragment() {
                     noteText = "Type your note here.."
                 )
                 noteViewModel.insert(newFolder)
+                Log.i("NoteListFragment", "Folder added")
             }
 
             //hide soft keyboard after FAB click
