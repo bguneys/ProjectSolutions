@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bguneys.app652020.R
 import com.bguneys.app652020.database.Plan
@@ -45,8 +46,9 @@ class PlannerFragment : Fragment() {
 
         binding.fabAddPlan.setOnClickListener {
             //Testing
-            val testPlan = Plan(planTitle="Plan", planDescription="description")
-            planViewModel.insert(testPlan)
+            //val testPlan = Plan(planTitle="Plan", planDescription="description")
+            //planViewModel.insert(testPlan)
+            findNavController().navigate(PlannerFragmentDirections.actionPlannerFragmentToAddPlanFragment())
         }
 
 
