@@ -16,9 +16,6 @@ data class Plan (
     @ColumnInfo(name = Constants.COLUMN_PLAN_DESCRIPTION)
     var planDescription : String = "",
 
-    @ColumnInfo(name = Constants.COLUMN_PLAN_START_DATE)
-    var planStartDate :Long = System.currentTimeMillis(),
-
     @ColumnInfo(name = Constants.COLUMN_PLAN_END_DATE)
-    var planEndDate :Long = planStartDate
+    var planEndDate :Long = 0L
 )

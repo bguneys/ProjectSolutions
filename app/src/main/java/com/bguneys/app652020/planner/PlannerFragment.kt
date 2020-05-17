@@ -37,7 +37,7 @@ class PlannerFragment : Fragment() {
             Toast.makeText(activity, it.planTitle, Toast.LENGTH_SHORT).show()
         })
 
-        planViewModel.planList.observe(viewLifecycleOwner, Observer { list ->
+        planViewModel.planList.observe(requireActivity(), Observer { list ->
             adapter.planList = list
         })
 
@@ -45,9 +45,7 @@ class PlannerFragment : Fragment() {
         binding.planListRecyclerView.layoutManager = LinearLayoutManager(activity)
 
         binding.fabAddPlan.setOnClickListener {
-            //Testing
-            //val testPlan = Plan(planTitle="Plan", planDescription="description")
-            //planViewModel.insert(testPlan)
+
             findNavController().navigate(PlannerFragmentDirections.actionPlannerFragmentToAddPlanFragment())
         }
 

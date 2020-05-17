@@ -9,8 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 
 import com.bguneys.app652020.R
+import com.bguneys.app652020.database.Plan
 import com.bguneys.app652020.database.PlanRepository
 import com.bguneys.app652020.databinding.FragmentAddPlanBinding
 
@@ -28,9 +30,8 @@ class AddPlanFragment : Fragment() {
         val planViewModelFactory = PlanViewModelFactory(mRepository!!)
         val planViewModel = ViewModelProvider(requireActivity(), planViewModelFactory).get(PlanViewModel::class.java)
 
-        planViewModel._datePickerResult.observe(viewLifecycleOwner, Observer {
+        planViewModel.datePickerResult.observe(requireActivity(), Observer {
             binding.pickEventDateTextView.text = it
-            Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
         })
 
         binding.pickEventDateButton.setOnClickListener{
@@ -39,7 +40,23 @@ class AddPlanFragment : Fragment() {
         }
 
         binding.addNotificationButton.setOnClickListener {
-            //planViewModel._datePickerResult.value = "Bulut"
+
+        }
+
+        binding.insertPlanButton.setOnClickListener {
+
+            planViewModel.datePickerMillis.observe(requireActivity(), Observer { date ->
+                val testPlan = Plan(planTitle = binding.eventTitleTextInputEditText.text.toString(),
+                    planDescription = binding.eventDescriptionTextInputEditText.text.toString(),
+                    planEndDate = date
+                )
+
+                planViewModel.insert(testPlan)
+
+                //navigate back to PlannerFragment after item added to the database
+                findNavController().navigate(AddPlanFragmentDirections.actionAddPlanFragmentToPlannerFragment())
+
+            })
         }
 
 

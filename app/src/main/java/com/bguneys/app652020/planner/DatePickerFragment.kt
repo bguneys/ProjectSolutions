@@ -36,27 +36,13 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
 
     override fun onDateSet(datePicker: DatePicker?, year: Int, month: Int, day: Int) {
 
-        planViewModel.getDatePickerResult(year, month, day)
-/*
-        val yearString = Integer.toString(year)
-        val monthString = Integer.toString(month + 1)
-        val dayString = Integer.toString(day)
-
-        if (Locale.getDefault().language == "en_US") {
-            PlanViewModel._datePickerResult.value = "$monthString / $dayString / $yearString"
-        } else {
-            PlanViewModel._datePickerResult.value = "$dayString / $monthString / $yearString"
-        }
-
-        Log.i("PlanViewModel", "getDaePickerResult() called. Result: ${PlanViewModel._datePickerResult.value} ")
-*/
-
         //receive chosen date and turn it into millis then pass it to the ViewModel
         val calendar : Calendar = Calendar.getInstance()
         calendar.set(year, month, day)
         val millis : Long? = calendar.timeInMillis
         planViewModel._datePickerMillis.value = millis
 
+        planViewModel.getDatePickerResult(requireActivity(), year, month, day)
     }
 
 
