@@ -34,6 +34,8 @@ class AddPlanFragment : Fragment() {
             binding.pickEventDateTextView.text = it
         })
 
+        binding.pickEventDateTextView.text = "Event Date: " //set initial text for first start
+
         binding.pickEventDateButton.setOnClickListener{
             val dialogFragment : DialogFragment = DatePickerFragment()
             dialogFragment.show(activity?.supportFragmentManager!!, "DatePicker" )
@@ -45,18 +47,15 @@ class AddPlanFragment : Fragment() {
 
         binding.insertPlanButton.setOnClickListener {
 
-            planViewModel.datePickerMillis.observe(requireActivity(), Observer { date ->
                 val testPlan = Plan(planTitle = binding.eventTitleTextInputEditText.text.toString(),
                     planDescription = binding.eventDescriptionTextInputEditText.text.toString(),
-                    planEndDate = date
+                    planEndDate = planViewModel.datePickerMillis.value!!
                 )
 
                 planViewModel.insert(testPlan)
 
                 //navigate back to PlannerFragment after item added to the database
                 findNavController().navigate(AddPlanFragmentDirections.actionAddPlanFragmentToPlannerFragment())
-
-            })
         }
 
 

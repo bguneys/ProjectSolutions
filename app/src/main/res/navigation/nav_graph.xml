@@ -71,6 +71,9 @@
         <action
             android:id="@+id/action_plannerFragment_to_addPlanFragment"
             app:destination="@id/addPlanFragment" />
+        <action
+            android:id="@+id/action_plannerFragment_to_viewPlanFragment"
+            app:destination="@id/viewPlanFragment" />
     </fragment>
     <fragment
         android:id="@+id/addPlanFragment"
@@ -79,6 +82,25 @@
         tools:layout="@layout/fragment_add_plan" >
         <action
             android:id="@+id/action_addPlanFragment_to_plannerFragment"
-            app:destination="@id/plannerFragment" />
+            app:destination="@id/plannerFragment"
+            app:popUpTo="@id/plannerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPlanFragment"
+        android:name="com.bguneys.app652020.planner.ViewPlanFragment"
+        android:label="fragment_view_plan"
+        tools:layout="@layout/fragment_view_plan" >
+        <argument
+            android:name="planId"
+            app:argType="integer" />
+        <argument
+            android:name="planTitle"
+            app:argType="string" />
+        <argument
+            android:name="planDescription"
+            app:argType="string" />
+        <argument
+            android:name="planDate"
+            app:argType="long" />
     </fragment>
 </navigation>

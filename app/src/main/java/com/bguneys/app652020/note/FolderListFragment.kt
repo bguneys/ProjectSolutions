@@ -134,7 +134,6 @@ class FolderListFragment : Fragment() {
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(binding.folderListRecyclerView)
 
-        // Inflate the layout for this fragment
         return binding.root
     }
 
