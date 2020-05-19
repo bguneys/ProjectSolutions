@@ -42,7 +42,7 @@ class AddPlanFragment : Fragment() {
         }
 
         binding.addNotificationButton.setOnClickListener {
-
+            //TODO
         }
 
         binding.insertPlanButton.setOnClickListener {

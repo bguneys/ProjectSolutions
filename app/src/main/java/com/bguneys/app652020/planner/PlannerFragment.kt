@@ -13,14 +13,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bguneys.app652020.R
-import com.bguneys.app652020.database.Plan
 import com.bguneys.app652020.database.PlanRepository
 import com.bguneys.app652020.databinding.FragmentPlannerBinding
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
 class PlannerFragment : Fragment() {
 
     //ViewBinding backing property
@@ -37,9 +32,9 @@ class PlannerFragment : Fragment() {
         val planViewModel = ViewModelProvider(this, planViewModelFactory).get(PlanViewModel::class.java)
 
         val adapter = PlanRecyclerViewAdapter(PlanRecyclerViewAdapter.PlanClickListener{
-            //Toast.makeText(activity, it.planTitle, Toast.LENGTH_SHORT).show()
 
-            //Sending plan details via action while navigating to ViewPLanFragment
+
+            //Sending plan details via action while navigating to ViewPlanFragment
             val action = PlannerFragmentDirections.actionPlannerFragmentToViewPlanFragment(
                 it.planId,
                 it.planTitle,
@@ -47,6 +42,7 @@ class PlannerFragment : Fragment() {
                 it.planEndDate
             )
             findNavController().navigate(action)
+
 
         })
 

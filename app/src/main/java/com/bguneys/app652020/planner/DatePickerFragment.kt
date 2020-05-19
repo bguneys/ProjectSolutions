@@ -40,7 +40,7 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
         val calendar : Calendar = Calendar.getInstance()
         calendar.set(year, month, day)
         val millis : Long? = calendar.timeInMillis
-        planViewModel._datePickerMillis.value = millis
+        planViewModel.setDatePickerMillis(millis!!)
 
         planViewModel.getDatePickerResult(requireActivity(), year, month, day)
     }

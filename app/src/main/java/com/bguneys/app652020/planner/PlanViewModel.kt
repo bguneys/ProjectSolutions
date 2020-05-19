@@ -22,16 +22,18 @@ class PlanViewModel (
     /**LiveData back properties for milli seconds obtained from Date Picker.
      * It is used to calculate time left until the event and inset data model.
      **/
-    var _datePickerMillis = MutableLiveData<Long>()
+    private var _datePickerMillis = MutableLiveData<Long>()
     val datePickerMillis: LiveData<Long>
         get() = _datePickerMillis
 
     /**LiveData back properties for result obtained from Date Picker.
     * It is used to show date in AddPlanFragment.
     **/
-    var _datePickerResult = MutableLiveData<String>()
+    private var _datePickerResult = MutableLiveData<String>()
     val datePickerResult: LiveData<String>
         get() = _datePickerResult
+
+    var selectedPlan : Plan? = null
 
     //Creating Job and Scope for Coroutines
     private var viewModelJob = Job()
@@ -83,9 +85,10 @@ class PlanViewModel (
         viewModelJob.cancel()
     }
 
-
-
-
+    //setting chosen date as milliseconds for the current Plan
+    fun setDatePickerMillis(millis : Long) {
+        _datePickerMillis.value = millis
+    }
 
 
 }
