@@ -1,5 +1,6 @@
 package com.bguneys.app652020.planner
 
+import android.content.Context
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.util.Log
@@ -35,40 +36,69 @@ class EditPlanFragment : Fragment() {
 
         setHasOptionsMenu(true) //required to add new menu
 
-        //Showing confirmation dialog message by applying custom back navigation
-        val callback = requireActivity().onBackPressedDispatcher
-            .addCallback(this) {
-
-                //show dialog to ask for saving changes before quit
-                val dialogBuilder = AlertDialog.Builder(requireContext())
-                dialogBuilder.setMessage("Save changes?")
-                    .setCancelable(false)
-                    .setPositiveButton("Save", { dialog, id ->
-                        savePlan() //custom method for updating the current Plan
-                        findNavController().navigateUp()
-                    })
-                    .setNegativeButton("No", { dialog, id ->
-                        dialog.dismiss() //do nothing and dismiss the dialog
-                        findNavController().navigateUp()
-                    })
-
-                val alert = dialogBuilder.create()
-                alert.show()
-            }
-
-        callback.isEnabled
+        //get arguments from PlannerFragment
+        args = EditPlanFragmentArgs.fromBundle(requireArguments())
 
         val mRepository = PlanRepository.getInstance(requireContext())
         val planViewModelFactory = PlanViewModelFactory(mRepository!!)
         planViewModel = ViewModelProvider(requireActivity(),
             planViewModelFactory).get(PlanViewModel::class.java)
 
-        planViewModel.datePickerResult.observe(requireActivity(), Observer{
+        //Showing confirmation dialog message by applying custom back navigation
+        val callback = requireActivity().onBackPressedDispatcher
+            .addCallback(this) {
+
+                //check if there is any changes made to the plan details
+                if (args.planTitle.equals(binding.eventTitleTextInputEditText.text.toString()) &&
+                    args.planDescription.equals(binding.eventDescriptionTextInputEditText.text.toString()) &&
+                    args.planDate.equals(planViewModel.datePickerMillis.value)) {
+
+                    // custom method for navigating to ViewPlanFragment with default calues
+                    navigateToViewPlanFragment(
+                        args.planId,
+                        args.planTitle,
+                        args.planDescription,
+                        args.planDate)
+
+                } else {
+
+                    //show dialog to ask for saving changes before quit
+                    val dialogBuilder = AlertDialog.Builder(requireContext())
+                    dialogBuilder.setMessage("Save changes?")
+                        .setCancelable(false)
+                        .setPositiveButton("Save", { dialog, id ->
+                            savePlan() //custom method for updating the current Plan
+
+                            // custom method for navigating to ViewPlanFragment with edited values
+                            navigateToViewPlanFragment(
+                                editedPlan.planId,
+                                editedPlan.planTitle,
+                                editedPlan.planDescription,
+                                editedPlan.planEndDate)
+                        })
+                        .setNegativeButton("No", { dialog, id ->
+                            dialog.dismiss() //do nothing and dismiss the dialog
+
+                            // custom method for navigating to ViewPlanFragment with default calues
+                            navigateToViewPlanFragment(
+                                args.planId,
+                                args.planTitle,
+                                args.planDescription,
+                                args.planDate)
+                        })
+
+                    val alert = dialogBuilder.create()
+                    alert.show()
+                }
+
+            }
+
+            callback.isEnabled
+
+
+        planViewModel.datePickerResult.observe(viewLifecycleOwner, Observer{
             binding.pickEventDateTextView.text = it
         })
-
-        //get arguments from PlannerFragment
-        args = EditPlanFragmentArgs.fromBundle(requireArguments())
 
         //Set arguments to Views in the fragment.
         binding.eventTitleTextInputEditText.setText(args.planTitle)
@@ -90,6 +120,7 @@ class EditPlanFragment : Fragment() {
 
         return binding.root
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_save_plan, menu)
@@ -132,6 +163,26 @@ class EditPlanFragment : Fragment() {
 
         planViewModel.update(editedPlan)
 
+    }
+
+    /**
+     * Custom method for updating the current note text
+     */
+    fun navigateToViewPlanFragment(
+        planId : Int,
+        planTitle : String,
+        planDescription :
+        String, planEndDate : Long) {
+
+        //Sending plan details via action while navigating to EditPlanFragment
+        val action = EditPlanFragmentDirections.actionEditPlanFragmentToViewPlanFragment(
+            planId,
+            planTitle,
+            planDescription,
+            planEndDate
+        )
+        //navigate back to PlannerFragment after item added to the database
+        findNavController().navigate(action)
     }
 
 }

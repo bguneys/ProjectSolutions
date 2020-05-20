@@ -33,8 +33,6 @@ class PlanViewModel (
     val datePickerResult: LiveData<String>
         get() = _datePickerResult
 
-    var selectedPlan : Plan? = null
-
     //Creating Job and Scope for Coroutines
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)

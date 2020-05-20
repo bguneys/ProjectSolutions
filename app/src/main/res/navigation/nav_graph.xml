@@ -126,5 +126,8 @@
         <argument
             android:name="planDate"
             app:argType="long" />
+        <action
+            android:id="@+id/action_editPlanFragment_to_viewPlanFragment"
+            app:destination="@id/viewPlanFragment" />
     </fragment>
 </navigation>

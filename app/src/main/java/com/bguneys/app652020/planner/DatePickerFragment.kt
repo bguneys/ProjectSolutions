@@ -9,6 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.bguneys.app652020.database.PlanRepository
 import io.reactivex.rxjava3.annotations.NonNull
+import kotlinx.android.synthetic.*
 import java.util.*
 
 class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
@@ -41,6 +42,7 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
         calendar.set(year, month, day)
         val millis : Long? = calendar.timeInMillis
         planViewModel.setDatePickerMillis(millis!!)
+
 
         planViewModel.getDatePickerResult(requireActivity(), year, month, day)
     }
