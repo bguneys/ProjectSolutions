@@ -41,9 +41,6 @@ class AddPlanFragment : Fragment() {
             dialogFragment.show(activity?.supportFragmentManager!!, "DatePicker" )
         }
 
-        binding.addNotificationButton.setOnClickListener {
-            //TODO
-        }
 
         binding.insertPlanButton.setOnClickListener {
 

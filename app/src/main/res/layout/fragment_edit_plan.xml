@@ -65,35 +65,4 @@
         app:layout_constraintStart_toStartOf="@+id/pick_event_date_textView"
         app:layout_constraintTop_toBottomOf="@+id/pick_event_date_textView" />
 
-    <TextView
-        android:id="@+id/notifications_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="Notifications"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pick_event_date_button" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/add_notification_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="8dp"
-        android:text="Add"
-        app:layout_constraintStart_toStartOf="@+id/notifications_textView"
-        app:layout_constraintTop_toBottomOf="@+id/notifications_textView" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Test Save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //change theme to default after showing splash screen
+        setTheme(R.style.AppTheme_NoActionBar)
+        window.setBackgroundDrawableResource(R.color.white)
+
         val toolbar : Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 

@@ -113,11 +113,6 @@ class EditPlanFragment : Fragment() {
             dialogFragment.show(activity?.supportFragmentManager!!, "DatePicker" )
         }
 
-        binding.addNotificationButton.setOnClickListener {
-            //TODO
-        }
-
-
         return binding.root
     }
 
