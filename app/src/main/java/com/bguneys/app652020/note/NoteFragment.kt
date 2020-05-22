@@ -41,21 +41,29 @@ class NoteFragment : Fragment() {
         val callback = requireActivity().onBackPressedDispatcher
             .addCallback(this) {
 
-                //show dialog to ask for saving changes before quit
-                val dialogBuilder = AlertDialog.Builder(requireContext())
-                dialogBuilder.setMessage("Save changes?")
-                    .setCancelable(false)
-                    .setPositiveButton("Save", { dialog, id ->
-                        saveTheNote() //custom method for updating the current note
-                        findNavController().navigateUp()
-                    })
-                    .setNegativeButton("No", { dialog, id ->
-                        dialog.dismiss() //do nothing and dismiss the dialog
-                        findNavController().navigateUp()
-                    })
+                //check if there is any changes made to the plan details
+                if (args.selectedNoteText.equals(binding.editTextNoteText.text.toString())) {
 
-                val alert = dialogBuilder.create()
-                alert.show()
+                    findNavController().navigateUp()
+
+                } else {
+
+                    //show dialog to ask for saving changes before quit
+                    val dialogBuilder = AlertDialog.Builder(requireContext())
+                    dialogBuilder.setMessage("Save changes?")
+                        .setCancelable(false)
+                        .setPositiveButton("Save", { dialog, id ->
+                            saveTheNote() //custom method for updating the current note
+                            findNavController().navigateUp()
+                        })
+                        .setNegativeButton("No", { dialog, id ->
+                            dialog.dismiss() //do nothing and dismiss the dialog
+                            findNavController().navigateUp()
+                        })
+
+                    val alert = dialogBuilder.create()
+                    alert.show()
+                }
             }
 
         callback.isEnabled
@@ -68,15 +76,20 @@ class NoteFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.setTitle(args.selectedNoteTitle)
 
 
-        val mRepository = ProjectRepository(this.activity?.applicationContext)
-        val noteViewModelFactory = NoteViewModelFactory(mRepository)
+        val mRepository = ProjectRepository.getInstance(requireActivity())
+        val noteViewModelFactory = NoteViewModelFactory(mRepository!!)
         noteViewModel = ViewModelProvider(this, noteViewModelFactory).get(NoteViewModel::class.java)
 
+        //set note text retrieved from NoteListFragment
+        binding.editTextNoteText.setText(args.selectedNoteText)
+
+/*
         //Showing the text of selected note inside selected folder
         noteViewModel.getFolderByFolderTitleAndNoteTitle(args.selectedFolderTitle, args.selectedNoteTitle)
             .observe(viewLifecycleOwner, Observer {
                 binding.editTextNoteText.setText(it.noteText)
             })
+*/
 
         return binding.root
     }

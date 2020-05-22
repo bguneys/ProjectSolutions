@@ -39,8 +39,8 @@ class NoteListFragment : Fragment() {
         //change toolbar label to folder title
         (activity as AppCompatActivity).supportActionBar?.setTitle(args.selectedFolderTitle)
 
-        val mRepository = ProjectRepository(this.activity?.applicationContext)
-        val noteViewModelFactory = NoteViewModelFactory(mRepository)
+        val mRepository = ProjectRepository.getInstance(requireActivity())
+        val noteViewModelFactory = NoteViewModelFactory(mRepository!!)
         val noteViewModel = ViewModelProvider(this, noteViewModelFactory)
             .get(NoteViewModel::class.java)
 
@@ -51,7 +51,7 @@ class NoteListFragment : Fragment() {
                 .actionNoteListFragmentToNoteFragment(
                     it.noteTitle!!,
                     args.selectedFolderTitle,
-                    it.recordId)
+                    it.recordId, it.noteText!!)
             findNavController().navigate(action)
         })
 

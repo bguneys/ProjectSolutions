@@ -15,6 +15,6 @@ interface PlanDao {
     @Delete
     suspend fun delete(plan : Plan)
 
-    @Query("SELECT * FROM plans_table ORDER BY plan_end_date DESC ")
+    @Query("SELECT * FROM plans_table ORDER BY plan_end_date ASC")
     fun getAllPlans() : LiveData<List<Plan>>
 }

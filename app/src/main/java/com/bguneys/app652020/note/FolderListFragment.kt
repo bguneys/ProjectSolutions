@@ -33,8 +33,8 @@ class FolderListFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentFolderListBinding.inflate(inflater, container, false)
 
-        val mRepository = ProjectRepository(this.activity?.applicationContext)
-        val noteViewModelFactory = NoteViewModelFactory(mRepository)
+        val mRepository = ProjectRepository.getInstance(requireActivity())
+        val noteViewModelFactory = NoteViewModelFactory(mRepository!!)
         val noteViewModel = ViewModelProvider(this, noteViewModelFactory).get(NoteViewModel::class.java)
 
         val adapter = FolderRecyclerViewAdapter(FolderRecyclerViewAdapter.FolderClickListener {
