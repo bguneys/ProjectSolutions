@@ -32,6 +32,8 @@ class NoteFragment : Fragment() {
     lateinit var args : NoteFragmentArgs
     lateinit var noteViewModel : NoteViewModel
 
+    var isUpButtonPressed = false //boolean for checking if up button pressed once
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentNoteBinding.inflate(inflater, container, false)
 
@@ -103,7 +105,13 @@ class NoteFragment : Fragment() {
 
         when (item.itemId) {
             android.R.id.home -> {
-                requireActivity().onBackPressedDispatcher.onBackPressed()
+
+                //check if Up button is pressed once using boolean to prevent double press
+                if (!isUpButtonPressed) {
+                    requireActivity().onBackPressedDispatcher.onBackPressed()
+                    isUpButtonPressed = true
+                }
+
                 return true
             }
 

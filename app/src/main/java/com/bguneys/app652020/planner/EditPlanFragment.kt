@@ -31,6 +31,8 @@ class EditPlanFragment : Fragment() {
 
     lateinit var editedPlan : Plan
 
+    var isUpButtonPressed = false //boolean for checking if up button pressed once
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentEditPlanBinding.inflate(inflater, container, false)
 
@@ -126,7 +128,13 @@ class EditPlanFragment : Fragment() {
 
         return when (item.itemId) {
             android.R.id.home -> {
-                requireActivity().onBackPressedDispatcher.onBackPressed()
+
+                //check if Up button is pressed once using boolean to prevent double press
+                if (!isUpButtonPressed) {
+                    requireActivity().onBackPressedDispatcher.onBackPressed()
+                    isUpButtonPressed = true
+                }
+
                 true
             }
 

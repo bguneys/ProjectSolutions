@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.bguneys.app652020.databinding.FragmentMainBinding
+import com.bumptech.glide.Glide
 
 class MainFragment : Fragment() {
 
@@ -16,25 +17,28 @@ class MainFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
+
+        Glide.with(this).load(R.drawable.img_note_taker).into(binding.imageViewNoteTaker)
+        Glide.with(this).load(R.drawable.img_planner).into(binding.imageViewPlanner)
+        Glide.with(this).load(R.drawable.img_world_overview).into(binding.imageViewWorldOverview)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        binding.button.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_infoFragment)
-        }
-
-        binding.noteButton.setOnClickListener {
+        binding.materialCardViewNoteTaker.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_folderListFragment)
         }
 
-        binding.noteListButton.setOnClickListener {
+        binding.materialCardViewPlanner.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_plannerFragment)
         }
 
+        binding.materialCardViewWorldOverview.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_infoFragment)
+        }
 
     }
 
