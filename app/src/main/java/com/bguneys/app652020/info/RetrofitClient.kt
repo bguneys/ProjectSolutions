@@ -13,7 +13,6 @@ private const val BASE_URL = "https://everyday-solutions.firebaseio.com"
 
 private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
-
 //Use the Retrofit builder to build a retrofit object using a Moshi converter with our Moshi object
 private val retrofit = Retrofit.Builder()
     .addCallAdapterFactory(RxJava3CallAdapterFactory.create())

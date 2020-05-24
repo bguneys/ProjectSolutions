@@ -7,12 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bguneys.app652020.R
+import com.bguneys.app652020.databinding.FragmentInfoBinding
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class InfoFragment : Fragment() {
+
+    //ViewBinding backing property
+    private var _binding : FragmentInfoBinding? = null
+    private val binding
+        get() = _binding!!
 
     lateinit var mTextView : TextView
     var mList : List<User>? = null
@@ -20,10 +28,18 @@ class InfoFragment : Fragment() {
     lateinit var compositeDisposible : CompositeDisposable
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        _binding = FragmentInfoBinding.inflate(inflater, container, false)
 
-        val view : View = inflater.inflate(R.layout.fragment_info, container, false)
+        val adapter = InfoPagedListAdapter(InfoPagedListAdapter.InfoClickListener{
 
-        mTextView = view.findViewById(R.id.result_textView)
+            //Sending info details via action while navigating to DetailsFragment
+            val action = InfoFragmentDirections.actionİnfoFragmentToDetailsFragment(
+                it.name
+            )
+
+            findNavController().navigate(action)
+
+        })
 
         compositeDisposible = CompositeDisposable()
 
@@ -34,40 +50,23 @@ class InfoFragment : Fragment() {
                 .subscribe({response ->
                     mList = response
 
-                    mTextView.setText(mList?.get(1)?.name)
-                    //Toast.makeText(activity, response.toString(), Toast.LENGTH_SHORT).show()
+                    adapter.submitList(mList)
 
                 }, {failure ->
                     Toast.makeText(activity, "Error: " + failure.message, Toast.LENGTH_SHORT).show()
                 })
         )
 
+        binding.infoRecyclerView.adapter = adapter
+        binding.infoRecyclerView.layoutManager = LinearLayoutManager(activity)
 
-/* Plain Retrofit
-
-        RetrofitObject.retrofitService.getUsers().enqueue(
-            object: Callback<List<User>>{
-
-                override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                    Toast.makeText(activity, "Error: " + t.message, Toast.LENGTH_SHORT).show()
-                }
-
-                override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
-                    mUserList = response.body()
-                    mTextView.setText(mUserList?.get(1)?.name)
-                }
-
-            })
-
- */
-
-        // Inflate the layout for this fragment
-        return view
+        return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         compositeDisposible.clear()
+        _binding = null
     }
 }
 
