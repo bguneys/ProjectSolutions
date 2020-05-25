@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bguneys.app652020.R
-import com.bguneys.app652020.planner.PlanRecyclerViewAdapter
 
-class InfoPagedListAdapter(val clickListener: InfoClickListener) : ListAdapter<User, InfoPagedListAdapter.ViewHolder>(DiffCallback) {
+class InfoPagedListAdapter(val clickListener: InfoClickListener) : ListAdapter<InfoItem, InfoPagedListAdapter.ViewHolder>(DiffCallback) {
 
-    var infoList = listOf<User>()
+    var infoList = listOf<InfoItem>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -20,10 +19,12 @@ class InfoPagedListAdapter(val clickListener: InfoClickListener) : ListAdapter<U
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
-        val countryTextView: TextView = itemView.findViewById(R.id.country_title_textView)
+        val titleTextView: TextView = itemView.findViewById(R.id.news_textView)
+        val descriptionTextView: TextView = itemView.findViewById(R.id.country_textView)
 
-        fun bind(info : User, clickListener: InfoClickListener) {
-            countryTextView.text = info.name
+        fun bind(info : InfoItem, clickListener: InfoClickListener) {
+            titleTextView.text = info.title
+            descriptionTextView.text = info.description
 
             itemView.setOnClickListener {
                 clickListener.onClick(info)
@@ -40,18 +41,18 @@ class InfoPagedListAdapter(val clickListener: InfoClickListener) : ListAdapter<U
         }
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<User>() {
+    companion object DiffCallback : DiffUtil.ItemCallback<InfoItem>() {
         /**
          * Called to check whether two objects represent the same item.
          */
-        override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
+        override fun areItemsTheSame(oldItem: InfoItem, newItem: InfoItem): Boolean {
             return oldItem === newItem
         }
 
         /**
          * Called to check whether two items have the same data.
          */
-        override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
+        override fun areContentsTheSame(oldItem: InfoItem, newItem: InfoItem): Boolean {
             return oldItem.id == newItem.id
         }
 
@@ -88,7 +89,7 @@ class InfoPagedListAdapter(val clickListener: InfoClickListener) : ListAdapter<U
         holder.bind(info!!, clickListener)
     }
 
-    class InfoClickListener(val clickListener: (info : User) -> Unit) {
-        fun onClick(info : User) = clickListener(info)
+    class InfoClickListener(val clickListener: (info : InfoItem) -> Unit) {
+        fun onClick(info : InfoItem) = clickListener(info)
     }
 }

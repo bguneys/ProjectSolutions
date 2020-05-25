@@ -1,5 +1,8 @@
 package com.bguneys.app652020.info
 
+import android.content.Intent
+import android.drm.DrmStore
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +12,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bguneys.app652020.R
 import com.bguneys.app652020.databinding.FragmentInfoBinding
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -22,8 +24,7 @@ class InfoFragment : Fragment() {
     private val binding
         get() = _binding!!
 
-    lateinit var mTextView : TextView
-    var mList : List<User>? = null
+    var mList : List<InfoItem>? = null
 
     lateinit var compositeDisposible : CompositeDisposable
 
@@ -32,12 +33,13 @@ class InfoFragment : Fragment() {
 
         val adapter = InfoPagedListAdapter(InfoPagedListAdapter.InfoClickListener{
 
-            //Sending info details via action while navigating to DetailsFragment
-            val action = InfoFragmentDirections.actionİnfoFragmentToDetailsFragment(
-                it.name
-            )
+            val url = it.url
+            val uri = Uri.parse(url)
+            val intent = Intent(Intent.ACTION_VIEW, uri)
 
-            findNavController().navigate(action)
+            if (intent.resolveActivity(requireActivity().packageManager) != null) {
+                startActivity(intent)
+            }
 
         })
 

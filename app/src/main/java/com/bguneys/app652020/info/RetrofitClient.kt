@@ -1,6 +1,5 @@
 package com.bguneys.app652020.info
 
-import com.bguneys.app652020.info.User
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
@@ -24,7 +23,7 @@ private val retrofit = Retrofit.Builder()
 //A public interface that exposes the method
 interface RetrofitService {
     @GET(".json")
-    fun getUsers() : Observable<List<User>>
+    fun getUsers() : Observable<List<InfoItem>>
 }
 
 //A public Api object that exposes the lazy-initialized Retrofit service

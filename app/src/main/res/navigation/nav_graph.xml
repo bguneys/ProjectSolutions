@@ -23,11 +23,7 @@
         android:id="@+id/infoFragment"
         android:name="com.bguneys.app652020.info.InfoFragment"
         android:label="fragment_info"
-        tools:layout="@layout/fragment_info" >
-        <action
-            android:id="@+id/action_infoFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_info" />
     <fragment
         android:id="@+id/folderListFragment"
         android:name="com.bguneys.app652020.note.FolderListFragment"
@@ -159,13 +155,4 @@
         android:id="@+id/disclaimerFragment"
         android:name="com.bguneys.app652020.settings.DisclaimerFragment"
         android:label="DisclaimerFragment" />
-    <fragment
-        android:id="@+id/detailsFragment"
-        android:name="com.bguneys.app652020.info.DetailsFragment"
-        android:label="fragment_details"
-        tools:layout="@layout/fragment_details" >
-        <argument
-            android:name="infoName"
-            app:argType="string" />
-    </fragment>
 </navigation>
