@@ -1,20 +1,12 @@
 package com.bguneys.app652020.settings
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-
 import com.bguneys.app652020.R
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class SettingsFragment : PreferenceFragmentCompat() {
     /**
      * Called during [.onCreate] to supply the preferences for this fragment.

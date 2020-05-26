@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bguneys.app652020.R
 
-class InfoPagedListAdapter(val clickListener: InfoClickListener) : ListAdapter<InfoItem, InfoPagedListAdapter.ViewHolder>(DiffCallback) {
+class InfoListAdapter(val clickListener: InfoClickListener) : ListAdapter<InfoItem, InfoListAdapter.ViewHolder>(DiffCallback) {
 
     var infoList = listOf<InfoItem>()
         set(value) {

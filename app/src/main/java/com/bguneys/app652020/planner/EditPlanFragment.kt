@@ -66,9 +66,9 @@ class EditPlanFragment : Fragment() {
 
                     //show dialog to ask for saving changes before quit
                     val dialogBuilder = AlertDialog.Builder(requireContext())
-                    dialogBuilder.setMessage("Save changes?")
+                    dialogBuilder.setMessage(getString(R.string.save_changes_question))
                         .setCancelable(false)
-                        .setPositiveButton("Save", { dialog, id ->
+                        .setPositiveButton(getString(R.string.save), { dialog, id ->
                             savePlan() //custom method for updating the current Plan
 
                             // custom method for navigating to ViewPlanFragment with edited values
@@ -78,7 +78,7 @@ class EditPlanFragment : Fragment() {
                                 editedPlan.planDescription,
                                 editedPlan.planEndDate)
                         })
-                        .setNegativeButton("No", { dialog, id ->
+                        .setNegativeButton(getString(R.string.no), { dialog, id ->
                             dialog.dismiss() //do nothing and dismiss the dialog
 
                             // custom method for navigating to ViewPlanFragment with default calues
@@ -140,7 +140,7 @@ class EditPlanFragment : Fragment() {
 
             R.id.action_save_plan -> {
                 savePlan() //custom method for updating the current Plan
-                Toast.makeText(activity, "Changes saved", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
                 true
             }
 

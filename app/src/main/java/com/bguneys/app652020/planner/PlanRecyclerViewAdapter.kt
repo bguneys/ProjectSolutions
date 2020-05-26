@@ -1,7 +1,6 @@
 package com.bguneys.app652020.planner
 
-import android.content.Context
-import android.text.format.DateFormat
+
 import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bguneys.app652020.R
 import com.bguneys.app652020.database.Plan
-import kotlin.coroutines.coroutineContext
+
 
 class PlanRecyclerViewAdapter(val clickListener: PlanClickListener) :
     RecyclerView.Adapter<PlanRecyclerViewAdapter.ViewHolder>() {

@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bguneys.app652020.R
 import com.bguneys.app652020.database.Folder
 import com.bguneys.app652020.database.ProjectRepository
 
@@ -63,7 +64,7 @@ class FolderListFragment : Fragment() {
                 if(folder.folderTitle.equals(binding.editTextFolderTitle.text.toString())) {
                     isFolderTitleSuitable = false
                     Toast.makeText(activity,
-                        "Folder with title ${binding.editTextFolderTitle.text} already available.",
+                        getString(R.string.available_folder_text, binding.editTextFolderTitle.text),
                         Toast.LENGTH_SHORT).show()
                 }
 
@@ -72,7 +73,7 @@ class FolderListFragment : Fragment() {
             //check if folder title is given. If not then show a warning message
             if (TextUtils.isEmpty(binding.editTextFolderTitle.text.toString())) {
                 isFolderTitleSuitable = false
-                Toast.makeText(activity, "Please type title for folder", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.type_folder_title_text), Toast.LENGTH_SHORT).show()
             }
 
             //if folder title is suitable then add the folder to the database
@@ -113,15 +114,15 @@ class FolderListFragment : Fragment() {
 
                 //show dialog to ensure deleting folder
                 val dialogBuilder = AlertDialog.Builder(context!!)
-                dialogBuilder.setMessage("Delete folder?")
+                dialogBuilder.setMessage(getString(R.string.delete_folder_question))
                     .setCancelable(false)
-                    .setPositiveButton("Delete", { dialog, id ->
+                    .setPositiveButton(getString(R.string.delete), { dialog, id ->
                         //delete folder
                         val position = viewHolder.adapterPosition
                         val selectedFolder = adapter.folderList.get(position)
                         noteViewModel.delete(selectedFolder)
                     })
-                    .setNegativeButton("Cancel", { dialog, id ->
+                    .setNegativeButton(getString(R.string.cancel), { dialog, id ->
                         dialog.dismiss() //do nothing and dismiss the dialog
                         adapter.notifyDataSetChanged() //revert swipe action when cancelled
                     })

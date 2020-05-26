@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".note.NoteFragment">
 
     <ScrollView
@@ -20,11 +21,15 @@
             android:id="@+id/editText_noteText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/design_default_color_background"
+            android:background="@color/colorBackground"
             android:ems="10"
             android:gravity="top|start"
-            android:hint="Type here"
-            android:inputType="textMultiLine" />
+            android:hint="@string/type_here"
+            android:inputType="textMultiLine"
+            android:autoLink="web"
+            android:lineSpacingExtra="4sp"
+            android:textColor="@color/colorTextOnPrimary"
+            android:textSize="16sp" />
 
     </ScrollView>
 

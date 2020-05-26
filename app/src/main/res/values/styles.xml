@@ -21,4 +21,8 @@
         <item name="android:windowBackground">@drawable/launch_screen_background</item>
     </style>
 
+    <style name ="ThemeOverlay.AppCompat.Light.CustomColor" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorControlNormal">@color/colorTextOnPrimary</item>
+    </style>
+
 </resources>

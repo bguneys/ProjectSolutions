@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bguneys.app652020.R
 import com.bguneys.app652020.database.PlanRepository
 import com.bguneys.app652020.databinding.FragmentPlannerBinding
 
@@ -79,15 +80,15 @@ class PlannerFragment : Fragment() {
 
                 //show dialog to ensure deleting folder
                 val dialogBuilder = AlertDialog.Builder(context!!)
-                dialogBuilder.setMessage("Delete folder?")
+                dialogBuilder.setMessage(getString(R.string.delete_event_question))
                     .setCancelable(false)
-                    .setPositiveButton("Delete", { dialog, id ->
+                    .setPositiveButton(getString(R.string.delete), { dialog, id ->
                         //delete folder
                         val position = viewHolder.adapterPosition
                         val selectedPlan = adapter.planList.get(position)
                         planViewModel.delete(selectedPlan)
                     })
-                    .setNegativeButton("Cancel", { dialog, id ->
+                    .setNegativeButton(getString(R.string.cancel), { dialog, id ->
                         dialog.dismiss() //do nothing and dismiss the dialog
                         adapter.notifyDataSetChanged() //revert swipe action when cancelled
                     })

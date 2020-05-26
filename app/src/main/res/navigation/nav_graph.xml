@@ -7,31 +7,47 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.bguneys.app652020.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        android:label="@string/main_board"
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
+            app:destination="@id/infoFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_mainFragment_to_folderListFragment"
-            app:destination="@id/folderListFragment" />
+            app:destination="@id/folderListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_mainFragment_to_plannerFragment"
-            app:destination="@id/plannerFragment" />
+            app:destination="@id/plannerFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
         android:name="com.bguneys.app652020.info.InfoFragment"
-        android:label="fragment_info"
+        android:label="@string/world_overview"
         tools:layout="@layout/fragment_info" />
     <fragment
         android:id="@+id/folderListFragment"
         android:name="com.bguneys.app652020.note.FolderListFragment"
-        android:label="Folder List"
+        android:label="@string/folder_list"
         tools:layout="@layout/fragment_folder_list">
         <action
             android:id="@+id/action_folderListFragment_to_noteListFragment"
-            app:destination="@id/noteListFragment" />
+            app:destination="@id/noteListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/noteListFragment"
@@ -43,7 +59,11 @@
             app:argType="string" />
         <action
             android:id="@+id/action_noteListFragment_to_noteFragment"
-            app:destination="@id/noteFragment" />
+            app:destination="@id/noteFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="SelectedFolderId"
             app:argType="integer" />
@@ -69,35 +89,49 @@
     <fragment
         android:id="@+id/plannerFragment"
         android:name="com.bguneys.app652020.planner.PlannerFragment"
-        android:label="Planner"
+        android:label="@string/planner"
         tools:layout="@layout/fragment_planner" >
         <action
             android:id="@+id/action_plannerFragment_to_addPlanFragment"
-            app:destination="@id/addPlanFragment" />
+            app:destination="@id/addPlanFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_plannerFragment_to_viewPlanFragment"
             app:destination="@id/viewPlanFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/viewPlanFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/addPlanFragment"
         android:name="com.bguneys.app652020.planner.AddPlanFragment"
-        android:label="fragment_add_plan"
-        tools:layout="@layout/fragment_add_plan" >
+        tools:layout="@layout/fragment_add_plan">
         <action
             android:id="@+id/action_addPlanFragment_to_plannerFragment"
             app:destination="@id/plannerFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/plannerFragment" />
     </fragment>
     <fragment
         android:id="@+id/viewPlanFragment"
         android:name="com.bguneys.app652020.planner.ViewPlanFragment"
-        android:label="fragment_view_plan"
-        tools:layout="@layout/fragment_view_plan" >
+        tools:layout="@layout/fragment_view_plan">
         <action
             android:id="@+id/action_viewPlanFragment_to_editPlanFragment"
             app:destination="@id/editPlanFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/editPlanFragment"
             app:popUpToInclusive="true" />
         <argument
@@ -115,8 +149,7 @@
     </fragment>
     <fragment
         android:id="@+id/editPlanFragment"
-        android:name="com.bguneys.app652020.planner.EditPlanFragment"
-        android:label="EditPlanFragment" >
+        android:name="com.bguneys.app652020.planner.EditPlanFragment">
         <argument
             android:name="planId"
             app:argType="integer" />
@@ -131,28 +164,46 @@
             app:argType="long" />
         <action
             android:id="@+id/action_editPlanFragment_to_viewPlanFragment"
-            app:destination="@id/viewPlanFragment" />
+            app:destination="@id/viewPlanFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/action_settings"
         android:name="com.bguneys.app652020.settings.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" >
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_action_settings_to_disclaimerFragment"
-            app:destination="@id/disclaimerFragment" />
+            app:destination="@id/disclaimerFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_action_settings_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
+            app:destination="@id/aboutFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
-    <action android:id="@+id/action_global_action_settings" app:destination="@id/action_settings" />
+    <action
+        android:id="@+id/action_global_action_settings"
+        app:destination="@id/action_settings"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.bguneys.app652020.settings.AboutFragment"
-        android:label="AboutFragment" />
+        android:label="@string/about" />
     <fragment
         android:id="@+id/disclaimerFragment"
         android:name="com.bguneys.app652020.settings.DisclaimerFragment"
-        android:label="DisclaimerFragment" />
+        android:label="@string/disclaimer" />
 </navigation>

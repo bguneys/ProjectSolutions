@@ -1,20 +1,14 @@
 package com.bguneys.app652020.note
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import com.bguneys.app652020.R
 import com.bguneys.app652020.database.Folder
 import com.bguneys.app652020.database.ProjectRepository
@@ -52,13 +46,13 @@ class NoteFragment : Fragment() {
 
                     //show dialog to ask for saving changes before quit
                     val dialogBuilder = AlertDialog.Builder(requireContext())
-                    dialogBuilder.setMessage("Save changes?")
+                    dialogBuilder.setMessage(getString(R.string.save_changes_question))
                         .setCancelable(false)
-                        .setPositiveButton("Save", { dialog, id ->
+                        .setPositiveButton(getString(R.string.save), { dialog, id ->
                             saveTheNote() //custom method for updating the current note
                             findNavController().navigateUp()
                         })
-                        .setNegativeButton("No", { dialog, id ->
+                        .setNegativeButton(getString(R.string.no), { dialog, id ->
                             dialog.dismiss() //do nothing and dismiss the dialog
                             findNavController().navigateUp()
                         })
@@ -85,14 +79,6 @@ class NoteFragment : Fragment() {
         //set note text retrieved from NoteListFragment
         binding.editTextNoteText.setText(args.selectedNoteText)
 
-/*
-        //Showing the text of selected note inside selected folder
-        noteViewModel.getFolderByFolderTitleAndNoteTitle(args.selectedFolderTitle, args.selectedNoteTitle)
-            .observe(viewLifecycleOwner, Observer {
-                binding.editTextNoteText.setText(it.noteText)
-            })
-*/
-
         return binding.root
     }
 
@@ -117,7 +103,7 @@ class NoteFragment : Fragment() {
 
             R.id.action_save_note -> {
                 saveTheNote() //custom method for updating the current note
-                Toast.makeText(activity, "Note saved", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.note_saved), Toast.LENGTH_SHORT).show()
                 return true
             }
 

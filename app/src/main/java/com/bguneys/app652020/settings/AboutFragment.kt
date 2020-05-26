@@ -5,13 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-import com.bguneys.app652020.R
 import com.bguneys.app652020.databinding.FragmentAboutBinding
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class AboutFragment : Fragment() {
 
     //ViewBinding backing property

@@ -11,13 +11,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
 
         <TextView
             android:id="@+id/plan_days_left_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4 Days"
+            tools:text="4 Days"
+            android:textColor="@color/colorTextOnPrimary"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/plan_date_textView"
@@ -28,7 +30,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="Date"
+            tools:text="Date"
+            android:textColor="@color/colorTextOnPrimary"
             app:layout_constraintBottom_toTopOf="@+id/plan_days_left_textView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -41,8 +44,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Plan Title"
-            android:textSize="15sp"
+            tools:text="Plan Title"
+            android:textColor="@color/colorTextOnPrimary"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/barrier"

@@ -31,10 +31,10 @@ class AddPlanFragment : Fragment() {
         val planViewModel = ViewModelProvider(requireActivity(), planViewModelFactory).get(PlanViewModel::class.java)
 
         planViewModel.datePickerResult.observe(requireActivity(), Observer {
-            binding.pickEventDateTextView.text = it
+            binding.pickEventDateTextView.text = getString(R.string.event_date_value, it)
         })
 
-        binding.pickEventDateTextView.text = "Event Date: " //set initial text for first start
+        binding.pickEventDateTextView.text = getString(R.string.event_date) //set initial text for first start
 
         binding.pickEventDateButton.setOnClickListener{
             val dialogFragment : DialogFragment = DatePickerFragment()

@@ -62,18 +62,9 @@ class PlanViewModel (
      * calculation from the input taken from DatePickerFragment
      */
     fun getDatePickerResult(context : Context, year : Int, month : Int, day : Int) {
-/*
-        val yearString = Integer.toString(year)
-        val monthString = Integer.toString(month + 1)
-        val dayString = Integer.toString(day)
 
-        if (Locale.getDefault().language == "en_US") {
-            _datePickerResult.value = "$monthString / $dayString / $yearString"
-        } else {
-            _datePickerResult.value = "$dayString / $monthString / $yearString"
-        }
-*/
-        _datePickerResult.value = DateUtils.formatDateTime(context, datePickerMillis.value!!, DateUtils.FORMAT_ABBREV_RELATIVE)
+        _datePickerResult.value = DateUtils.formatDateTime(context, datePickerMillis.value!!,
+            DateUtils.FORMAT_ABBREV_RELATIVE)
 
     }
 

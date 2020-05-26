@@ -1,17 +1,15 @@
 package com.bguneys.app652020.info
 
 import android.content.Intent
-import android.drm.DrmStore
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bguneys.app652020.R
 import com.bguneys.app652020.databinding.FragmentInfoBinding
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -31,7 +29,7 @@ class InfoFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentInfoBinding.inflate(inflater, container, false)
 
-        val adapter = InfoPagedListAdapter(InfoPagedListAdapter.InfoClickListener{
+        val adapter = InfoListAdapter(InfoListAdapter.InfoClickListener{
 
             val url = it.url
             val uri = Uri.parse(url)
@@ -55,7 +53,7 @@ class InfoFragment : Fragment() {
                     adapter.submitList(mList)
 
                 }, {failure ->
-                    Toast.makeText(activity, "Error: " + failure.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, getString(R.string.error_text, failure.message), Toast.LENGTH_SHORT).show()
                 })
         )
 

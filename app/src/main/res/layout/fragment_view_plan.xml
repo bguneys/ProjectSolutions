@@ -14,7 +14,8 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:gravity="center_horizontal|center_vertical"
-        android:text="TextView"
+        tools:text="Header"
+        android:textColor="@color/colorTextOnPrimary"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:text="Desription:"
+        android:text="@string/desription"
+        android:textColor="@color/colorTextOnPrimary"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +40,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:text="TextView"
+        tools:text="Event description"
+        android:textColor="@color/colorTextOnPrimary"
         app:layout_constraintStart_toStartOf="@+id/textView_plan_description_header"
         app:layout_constraintTop_toBottomOf="@+id/textView_plan_description_header" />
 
@@ -47,7 +50,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Event Date:"
+        android:text="@string/event_date"
+        android:textColor="@color/colorTextOnPrimary"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView_plan_description_header"
@@ -58,17 +62,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="TextView"
+        tools:text="15/01/2020"
+        android:textColor="@color/colorTextOnPrimary"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView_plan_date_header"
         app:layout_constraintStart_toEndOf="@+id/textView_plan_date_header" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Test Edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

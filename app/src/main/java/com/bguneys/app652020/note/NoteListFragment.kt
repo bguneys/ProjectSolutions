@@ -4,7 +4,6 @@ import androidx.appcompat.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bguneys.app652020.R
 import com.bguneys.app652020.database.Folder
 
 import com.bguneys.app652020.database.ProjectRepository
@@ -71,7 +71,7 @@ class NoteListFragment : Fragment() {
                 if(folder.noteTitle.equals(binding.editTextNoteTitle.text.toString())) {
                     isNoteTitleSuitable = false
                     Toast.makeText(activity,
-                        "Note with title ${binding.editTextNoteTitle.text} already available.",
+                        getString(R.string.available_note_text, binding.editTextNoteTitle.text),
                         Toast.LENGTH_SHORT).show()
                 }
 
@@ -80,7 +80,7 @@ class NoteListFragment : Fragment() {
             //check if note title is given. If not then show a warning message
             if (TextUtils.isEmpty(binding.editTextNoteTitle.text.toString())) {
                 isNoteTitleSuitable = false
-                Toast.makeText(activity, "Please type title for note", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.type_note_title), Toast.LENGTH_SHORT).show()
             }
 
             //if note title is suitable then add the note to the database
@@ -89,7 +89,7 @@ class NoteListFragment : Fragment() {
                 val newFolder = Folder(
                     folderTitle = args.selectedFolderTitle,
                     noteTitle = newNoteTitle,
-                    noteText = "Type your note here.."
+                    noteText = getString(R.string.type_note)
                 )
                 noteViewModel.insert(newFolder)
             }
@@ -125,9 +125,9 @@ class NoteListFragment : Fragment() {
 
                 //show dialog to ensure deleting note
                 val dialogBuilder = AlertDialog.Builder(context!!)
-                dialogBuilder.setMessage("Delete folder?")
+                dialogBuilder.setMessage(getString(R.string.delete_note_question))
                     .setCancelable(false)
-                    .setPositiveButton("Delete", {dialog, id ->
+                    .setPositiveButton(getString(R.string.delete), {dialog, id ->
                         //delete note
                         val position = viewHolder.adapterPosition
                         val selectedFolder = adapter.noteList.get(position)
@@ -136,7 +136,7 @@ class NoteListFragment : Fragment() {
                             selectedFolder.noteTitle!!)
 
                         })
-                    .setNegativeButton("Cancel", { dialog, id ->
+                    .setNegativeButton(getString(R.string.cancel), { dialog, id ->
                         dialog.dismiss() //do nothing and dismiss the dialog
                         adapter.notifyDataSetChanged() //revert swipe action when cancelled
                     })
