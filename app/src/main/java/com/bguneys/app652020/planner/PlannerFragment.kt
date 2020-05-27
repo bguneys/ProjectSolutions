@@ -47,9 +47,19 @@ class PlannerFragment : Fragment() {
 
         })
 
-        planViewModel.planList.observe(requireActivity(), Observer { list ->
+        planViewModel.planList.observe(viewLifecycleOwner, Observer { list ->
             adapter.planList = list
+
+            //if there is no item in the list show empty list message
+            if(list.isEmpty()) {
+                binding.emptyTextView.visibility = View.VISIBLE
+            } else {
+                binding.emptyTextView.visibility = View.GONE
+            }
+
         })
+
+
 
         binding.planListRecyclerView.adapter = adapter
         binding.planListRecyclerView.layoutManager = LinearLayoutManager(activity)

@@ -49,6 +49,14 @@ class FolderListFragment : Fragment() {
         //Showing most recent list of folders
         noteViewModel.folderList.observe(viewLifecycleOwner, Observer { list ->
             adapter.folderList = list
+
+            //if there is no item in the list show empty list message
+            if(list.isEmpty()) {
+                binding.emptyTextView.visibility = View.VISIBLE
+            } else {
+                binding.emptyTextView.visibility = View.GONE
+            }
+
         })
 
         binding.folderListRecyclerView.adapter = adapter
@@ -82,6 +90,7 @@ class FolderListFragment : Fragment() {
                 val newFolder =
                     Folder(folderTitle = newFolderTitle, noteTitle = null, noteText = null)
                 noteViewModel.insert(newFolder)
+
             }
 
             //hide soft keyboard after FAB click

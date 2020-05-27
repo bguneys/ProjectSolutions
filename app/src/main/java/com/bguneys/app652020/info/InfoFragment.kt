@@ -51,9 +51,12 @@ class InfoFragment : Fragment() {
                     mList = response
 
                     adapter.submitList(mList)
+                    binding.errorTextView.visibility = View.GONE
 
                 }, {failure ->
-                    Toast.makeText(activity, getString(R.string.error_text, failure.message), Toast.LENGTH_SHORT).show()
+                    binding.errorTextView.text = getString(R.string.error_text)
+                    binding.errorTextView.visibility = View.VISIBLE
+                    Toast.makeText(activity, getString(R.string.cant_connect_to_internet), Toast.LENGTH_SHORT).show()
                 })
         )
 

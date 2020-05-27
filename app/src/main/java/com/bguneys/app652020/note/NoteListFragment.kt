@@ -58,7 +58,16 @@ class NoteListFragment : Fragment() {
         //Showing most recent list of notes
         noteViewModel.getFolderByTitle(args.selectedFolderTitle)
             .observe(viewLifecycleOwner, Observer { list ->
+
             adapter.noteList = list
+
+            //if there is no item in the list show empty list message
+            if(list.isEmpty()) {
+                binding.emptyTextView.visibility = View.VISIBLE
+            } else {
+                binding.emptyTextView.visibility = View.GONE
+            }
+
         })
 
         //Adding new note to the database

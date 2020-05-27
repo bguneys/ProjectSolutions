@@ -30,7 +30,7 @@ class AddPlanFragment : Fragment() {
         val planViewModelFactory = PlanViewModelFactory(mRepository!!)
         val planViewModel = ViewModelProvider(requireActivity(), planViewModelFactory).get(PlanViewModel::class.java)
 
-        planViewModel.datePickerResult.observe(requireActivity(), Observer {
+        planViewModel.datePickerResult.observe(viewLifecycleOwner, Observer {
             binding.pickEventDateTextView.text = getString(R.string.event_date_value, it)
         })
 
@@ -52,7 +52,8 @@ class AddPlanFragment : Fragment() {
                 planViewModel.insert(testPlan)
 
                 //navigate back to PlannerFragment after item added to the database
-                findNavController().navigate(AddPlanFragmentDirections.actionAddPlanFragmentToPlannerFragment())
+                //findNavController().navigate(AddPlanFragmentDirections.actionAddPlanFragmentToPlannerFragment())
+                findNavController().navigateUp()
         }
 
 
