@@ -31,6 +31,12 @@ class NoteViewModel (
         }
     }
 
+    fun deleteByFolderTitle(folderTitle: String) {
+        uiScope.launch {
+            repository.deleteByFolderTitle(folderTitle)
+        }
+    }
+
     fun update(folder : Folder) {
         uiScope.launch {
             repository.update(folder)

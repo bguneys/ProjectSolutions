@@ -2,6 +2,7 @@ package com.bguneys.app652020.planner
 
 import android.content.Context
 import android.os.Bundle
+import android.text.TextUtils
 import android.text.format.DateUtils
 import android.util.Log
 import android.view.*
@@ -95,7 +96,7 @@ class EditPlanFragment : Fragment() {
 
             }
 
-            callback.isEnabled
+        callback.isEnabled
 
 
         planViewModel.datePickerResult.observe(viewLifecycleOwner, Observer{

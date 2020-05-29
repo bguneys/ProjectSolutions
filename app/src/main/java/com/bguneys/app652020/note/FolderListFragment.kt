@@ -126,7 +126,7 @@ class FolderListFragment : Fragment() {
                         //delete folder
                         val position = viewHolder.adapterPosition
                         val selectedFolder = adapter.folderList.get(position)
-                        noteViewModel.delete(selectedFolder)
+                        noteViewModel.deleteByFolderTitle(selectedFolder.folderTitle)
                     })
                     .setNegativeButton(getString(R.string.cancel), { dialog, id ->
                         dialog.dismiss() //do nothing and dismiss the dialog

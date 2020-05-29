@@ -15,7 +15,7 @@ interface FolderDao {
     @Delete
     suspend fun delete(folder : Folder)
 
-    @Query("SELECT * FROM notes_table GROUP BY folder_title")
+    @Query("SELECT * FROM notes_table GROUP BY folder_title ORDER BY record_id ASC")
     fun getFolderList() : LiveData<List<Folder>>
 
     @Query("SELECT * FROM notes_table WHERE folder_title = :folderTitle AND note_title IS NOT NULL")
@@ -26,6 +26,9 @@ interface FolderDao {
 
     @Query("DELETE FROM notes_table WHERE folder_title=:folderTitle AND note_title=:noteTitle")
     suspend fun deleteByFolderTitleAndNoteTitle(folderTitle: String, noteTitle : String)
+
+    @Query("DELETE FROM notes_table WHERE folder_title=:folderTitle")
+    suspend fun deleteByFolderTitle(folderTitle: String)
 
 
 }

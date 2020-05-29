@@ -1,6 +1,7 @@
 package com.bguneys.app652020.planner
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -44,6 +45,22 @@ class AddPlanFragment : Fragment() {
 
         binding.insertPlanButton.setOnClickListener {
 
+            var isPlanSuitable : Boolean = true
+
+            //check if plan title is given. If not then show a warning message
+            if (TextUtils.isEmpty(binding.eventTitleTextInputEditText.text.toString())) {
+                isPlanSuitable = false
+                Toast.makeText(activity, getString(R.string.type_title_for_event), Toast.LENGTH_SHORT).show()
+            }
+
+            //check if plan date is chosen. If not then show a warning message
+            if (binding.pickEventDateTextView.text.equals("Event Date:")) {
+                isPlanSuitable = false
+                Toast.makeText(activity, "Please choose a date", Toast.LENGTH_SHORT).show()
+            }
+
+            //if plan is suitable for adding then add the plan to the database
+            if (isPlanSuitable) {
                 val testPlan = Plan(planTitle = binding.eventTitleTextInputEditText.text.toString(),
                     planDescription = binding.eventDescriptionTextInputEditText.text.toString(),
                     planEndDate = planViewModel.datePickerMillis.value!!
@@ -52,8 +69,8 @@ class AddPlanFragment : Fragment() {
                 planViewModel.insert(testPlan)
 
                 //navigate back to PlannerFragment after item added to the database
-                //findNavController().navigate(AddPlanFragmentDirections.actionAddPlanFragmentToPlannerFragment())
                 findNavController().navigateUp()
+            }
         }
 
 

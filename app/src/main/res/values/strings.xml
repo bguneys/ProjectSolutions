@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App 622020</string>
+    <string name="app_name">Everyday Solutions</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -55,4 +55,5 @@
     <string name="no_folder_added_yet">No folder added yet</string>
     <string name="no_note_added_yet">No note added yet</string>
     <string name="no_event_added_yet">No event added yet</string>
+    <string name="type_title_for_event">Please type a title</string>
 </resources>

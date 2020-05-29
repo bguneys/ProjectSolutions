@@ -45,6 +45,12 @@ class ProjectRepository (
         }
     }
 
+    suspend fun deleteByFolderTitle(folderTitle: String) {
+        withContext(Dispatchers.IO) {
+            folderDao.deleteByFolderTitle(folderTitle)
+        }
+    }
+
     suspend fun insert(folder : Folder) {
         withContext(Dispatchers.IO) {
             folderDao.insert(folder)
