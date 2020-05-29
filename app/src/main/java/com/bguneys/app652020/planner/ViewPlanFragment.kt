@@ -1,8 +1,10 @@
 package com.bguneys.app652020.planner
 
+import android.content.Context
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.view.*
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -76,5 +78,6 @@ class ViewPlanFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 
 }

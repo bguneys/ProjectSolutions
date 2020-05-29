@@ -1,10 +1,12 @@
 package com.bguneys.app652020.planner
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
@@ -119,4 +121,5 @@ class PlannerFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

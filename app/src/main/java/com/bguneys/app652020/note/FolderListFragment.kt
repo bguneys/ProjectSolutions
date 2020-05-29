@@ -93,10 +93,7 @@ class FolderListFragment : Fragment() {
 
             }
 
-            //hide soft keyboard after FAB click
-            val inputMethodManager =
-                context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(view?.windowToken, 0)
+            hideKeyboard()  //custom method to hide soft keyboard after FAB click
 
             //clear EditText after FAB click
             binding.editTextFolderTitle.setText("")
@@ -150,6 +147,15 @@ class FolderListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    /**
+     * Custom method for hiding soft keyboard
+     */
+    private fun hideKeyboard() {
+        val inputMethodManager =
+            context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view?.windowToken, 0)
     }
 
 }
