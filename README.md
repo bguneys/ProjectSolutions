@@ -3,7 +3,7 @@
 [![](logo_image.png)](logo_image.png)
 
 ### Introduction
-"Everyday Solutions" is an Android application which makes it easy for users to take quick notes, planning their events and getting most recent information about developments in the world. It is designed and and built in a way to provide fast and compact user experience. 
+"Everyday Solutions" is an Android application which makes it easy for users to take quick notes, planning their events and getting most recent information about developments in the world. It is designed and built in a way to provide fast and compact user experience. 
 
 ### Features
 - "Note Taker" section of the app is an easy to use note writing functionality which lets users to write and read their notes quickly by minimazing the number of screens and taps to reach the notes.
@@ -27,6 +27,7 @@
 
 ### Todo
 * Adding notifications for events in "Planner" section
+* Adding "Calculations" and "Unit Conversions" as new sections
 * Adding options to change the order of notes in the list
 * Adding date and title change options for folders and notes 
 * Adding night mode
