@@ -27,6 +27,6 @@
 
 ### Todo
 * Adding notifications for events in "Planner" section
-* Addng options to change the order of notes in the list
+* Adding options to change the order of notes in the list
 * Adding date and title change options for folders and notes 
 * Adding night mode
