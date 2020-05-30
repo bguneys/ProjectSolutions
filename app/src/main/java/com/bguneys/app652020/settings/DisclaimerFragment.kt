@@ -1,11 +1,11 @@
-package com.bguneys.app652020.settings
+package com.everydaysolutions.bguneys.everydaysolutions.settings
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bguneys.app652020.databinding.FragmentDisclaimerBinding
+import com.everydaysolutions.bguneys.everydaysolutions.databinding.FragmentDisclaimerBinding
 
 class DisclaimerFragment : Fragment() {
 
