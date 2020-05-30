@@ -1,4 +1,4 @@
-package com.bguneys.app652020.planner
+package com.everydaysolutions.bguneys.everydaysolutions.planner
 
 import android.content.Context
 import android.os.Bundle
@@ -15,9 +15,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bguneys.app652020.R
-import com.bguneys.app652020.database.PlanRepository
-import com.bguneys.app652020.databinding.FragmentPlannerBinding
+import com.everydaysolutions.bguneys.everydaysolutions.R
+import com.everydaysolutions.bguneys.everydaysolutions.database.PlanRepository
+import com.everydaysolutions.bguneys.everydaysolutions.databinding.FragmentPlannerBinding
 
 class PlannerFragment : Fragment() {
 
