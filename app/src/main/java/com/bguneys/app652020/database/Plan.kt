@@ -1,4 +1,4 @@
-package com.bguneys.app652020.database
+package com.everydaysolutions.bguneys.everydaysolutions.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
