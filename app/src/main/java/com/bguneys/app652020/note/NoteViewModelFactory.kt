@@ -1,8 +1,8 @@
-package com.bguneys.app652020.note
+package com.everydaysolutions.bguneys.everydaysolutions.note
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.bguneys.app652020.database.ProjectRepository
+import com.everydaysolutions.bguneys.everydaysolutions.database.ProjectRepository
 
 class NoteViewModelFactory(
     private val repository: ProjectRepository) : ViewModelProvider.Factory {
