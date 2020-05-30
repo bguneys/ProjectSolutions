@@ -1,9 +1,9 @@
-package com.bguneys.app652020.note
+package com.everydaysolutions.bguneys.everydaysolutions.note
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.bguneys.app652020.database.Folder
-import com.bguneys.app652020.database.ProjectRepository
+import com.everydaysolutions.bguneys.everydaysolutions.database.Folder
+import com.everydaysolutions.bguneys.everydaysolutions.database.ProjectRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
