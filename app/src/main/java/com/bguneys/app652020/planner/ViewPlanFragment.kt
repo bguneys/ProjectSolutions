@@ -1,4 +1,4 @@
-package com.bguneys.app652020.planner
+package com.everydaysolutions.bguneys.everydaysolutions.planner
 
 import android.content.Context
 import android.os.Bundle
@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 
-import com.bguneys.app652020.R
-import com.bguneys.app652020.database.PlanRepository
-import com.bguneys.app652020.databinding.FragmentViewPlanBinding
+import com.everydaysolutions.bguneys.everydaysolutions.R
+import com.everydaysolutions.bguneys.everydaysolutions.database.PlanRepository
+import com.everydaysolutions.bguneys.everydaysolutions.databinding.FragmentViewPlanBinding
 
 
 class ViewPlanFragment : Fragment() {
