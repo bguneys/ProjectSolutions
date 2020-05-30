@@ -1,4 +1,4 @@
-package com.bguneys.app652020
+package com.everydaysolutions.bguneys.everydaysolutions
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.bguneys.app652020.databinding.FragmentMainBinding
+import com.everydaysolutions.bguneys.everydaysolutions.databinding.FragmentMainBinding
 import com.bumptech.glide.Glide
 
 class MainFragment : Fragment() {
