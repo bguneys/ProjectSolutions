@@ -1,4 +1,4 @@
-package com.bguneys.app652020.planner
+package com.everydaysolutions.bguneys.everydaysolutions.planner
 
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -7,7 +7,7 @@ import android.util.Log
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
-import com.bguneys.app652020.database.PlanRepository
+import com.everydaysolutions.bguneys.everydaysolutions.database.PlanRepository
 import io.reactivex.rxjava3.annotations.NonNull
 import kotlinx.android.synthetic.*
 import java.util.*
