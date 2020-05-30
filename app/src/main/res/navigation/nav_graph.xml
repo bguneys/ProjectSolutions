@@ -6,7 +6,7 @@
     app:startDestination="@id/mainFragment">
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.bguneys.app652020.MainFragment"
+        android:name="com.everydaysolutions.bguneys.everydaysolutions.MainFragment"
         android:label="@string/main_board"
         tools:layout="@layout/fragment_main">
         <action
@@ -33,12 +33,12 @@
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
-        android:name="com.bguneys.app652020.info.InfoFragment"
+        android:name="com.everydaysolutions.bguneys.everydaysolutions.info.InfoFragment"
         android:label="@string/world_overview"
         tools:layout="@layout/fragment_info" />
     <fragment
         android:id="@+id/folderListFragment"
-        android:name="com.bguneys.app652020.note.FolderListFragment"
+        android:name="com.everydaysolutions.bguneys.everydaysolutions.note.FolderListFragment"
         android:label="@string/folder_list"
         tools:layout="@layout/fragment_folder_list">
         <action
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/noteListFragment"
-        android:name="com.bguneys.app652020.note.NoteListFragment"
+        android:name="com.everydaysolutions.bguneys.everydaysolutions.note.NoteListFragment"
         android:label="fragment_note_list"
         tools:layout="@layout/fragment_note_list" >
         <argument
@@ -70,7 +70,7 @@
     </fragment>
     <fragment
         android:id="@+id/noteFragment"
-        android:name="com.bguneys.app652020.note.NoteFragment"
+        android:name="com.everydaysolutions.bguneys.everydaysolutions.note.NoteFragment"
         android:label="fragment_note"
         tools:layout="@layout/fragment_note" >
         <argument
@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/plannerFragment"
-        android:name="com.bguneys.app652020.planner.PlannerFragment"
+        android:name="com.everydaysolutions.bguneys.everydaysolutions.planner.PlannerFragment"
         android:label="@string/planner"
         tools:layout="@layout/fragment_planner" >
         <action
@@ -112,7 +112,7 @@
     </fragment>
     <fragment
         android:id="@+id/addPlanFragment"
-        android:name="com.bguneys.app652020.planner.AddPlanFragment"
+        android:name="com.everydaysolutions.bguneys.everydaysolutions.planner.AddPlanFragment"
         tools:layout="@layout/fragment_add_plan">
         <action
             android:id="@+id/action_addPlanFragment_to_plannerFragment"
@@ -125,7 +125,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewPlanFragment"
-        android:name="com.bguneys.app652020.planner.ViewPlanFragment"
+        android:name="com.everydaysolutions.bguneys.everydaysolutions.planner.ViewPlanFragment"
         tools:layout="@layout/fragment_view_plan">
         <action
             android:id="@+id/action_viewPlanFragment_to_editPlanFragment"
@@ -151,7 +151,7 @@
     </fragment>
     <fragment
         android:id="@+id/editPlanFragment"
-        android:name="com.bguneys.app652020.planner.EditPlanFragment">
+        android:name="com.everydaysolutions.bguneys.everydaysolutions.planner.EditPlanFragment">
         <argument
             android:name="planId"
             app:argType="integer" />
@@ -176,7 +176,7 @@
     </fragment>
     <fragment
         android:id="@+id/action_settings"
-        android:name="com.bguneys.app652020.settings.SettingsFragment"
+        android:name="com.everydaysolutions.bguneys.everydaysolutions.settings.SettingsFragment"
         android:label="@string/settings"
         tools:layout="@layout/fragment_settings">
         <action
@@ -204,10 +204,10 @@
         app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.bguneys.app652020.settings.AboutFragment"
+        android:name="com.everydaysolutions.bguneys.everydaysolutions.settings.AboutFragment"
         android:label="@string/about" />
     <fragment
         android:id="@+id/disclaimerFragment"
-        android:name="com.bguneys.app652020.settings.DisclaimerFragment"
+        android:name="com.everydaysolutions.bguneys.everydaysolutions.settings.DisclaimerFragment"
         android:label="@string/disclaimer" />
 </navigation>

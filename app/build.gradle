@@ -13,11 +13,11 @@ android {
 
 
     defaultConfig {
-        applicationId "com.bguneys.app652020"
+        applicationId "com.everydaysolutions.bguneys.everydaysolutions"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "3.0"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
