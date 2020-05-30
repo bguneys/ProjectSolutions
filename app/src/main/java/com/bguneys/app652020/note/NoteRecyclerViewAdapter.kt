@@ -1,12 +1,12 @@
-package com.bguneys.app652020.note
+package com.everydaysolutions.bguneys.everydaysolutions.note
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bguneys.app652020.R
-import com.bguneys.app652020.database.Folder
+import com.everydaysolutions.bguneys.everydaysolutions.R
+import com.everydaysolutions.bguneys.everydaysolutions.database.Folder
 
 
 class NoteRecyclerViewAdapter(val clickListener : NoteClickListener) : RecyclerView.Adapter<NoteRecyclerViewAdapter.ViewHolder>() {
