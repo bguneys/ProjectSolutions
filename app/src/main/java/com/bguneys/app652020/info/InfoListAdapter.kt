@@ -1,4 +1,4 @@
-package com.bguneys.app652020.info
+package com.everydaysolutions.bguneys.everydaysolutions.info
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bguneys.app652020.R
+import com.everydaysolutions.bguneys.everydaysolutions.R
 
 class InfoListAdapter(val clickListener: InfoClickListener) : ListAdapter<InfoItem, InfoListAdapter.ViewHolder>(DiffCallback) {
 
