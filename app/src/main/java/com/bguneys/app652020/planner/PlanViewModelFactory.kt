@@ -1,8 +1,8 @@
-package com.bguneys.app652020.planner
+package com.everydaysolutions.bguneys.everydaysolutions.planner
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.bguneys.app652020.database.PlanRepository
+import com.everydaysolutions.bguneys.everydaysolutions.database.PlanRepository
 
 class PlanViewModelFactory(
     private val repository: PlanRepository) : ViewModelProvider.Factory {
