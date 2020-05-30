@@ -1,4 +1,4 @@
-package com.bguneys.app652020.info
+package com.everydaysolutions.bguneys.everydaysolutions.info
 
 import android.content.Intent
 import android.net.Uri
@@ -9,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bguneys.app652020.R
-import com.bguneys.app652020.databinding.FragmentInfoBinding
+import com.everydaysolutions.bguneys.everydaysolutions.R
+import com.everydaysolutions.bguneys.everydaysolutions.databinding.FragmentInfoBinding
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
