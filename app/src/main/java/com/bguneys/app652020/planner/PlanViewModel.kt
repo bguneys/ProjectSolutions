@@ -1,4 +1,4 @@
-package com.bguneys.app652020.planner
+package com.everydaysolutions.bguneys.everydaysolutions.planner
 
 import android.content.Context
 import android.text.format.DateUtils
@@ -7,8 +7,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.bguneys.app652020.database.Plan
-import com.bguneys.app652020.database.PlanRepository
+import com.everydaysolutions.bguneys.everydaysolutions.database.Plan
+import com.everydaysolutions.bguneys.everydaysolutions.database.PlanRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
