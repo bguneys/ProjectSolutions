@@ -1,4 +1,4 @@
-package com.bguneys.app652020.info
+package com.everydaysolutions.bguneys.everydaysolutions.info
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
