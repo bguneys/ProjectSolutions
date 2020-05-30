@@ -1,4 +1,4 @@
-package com.bguneys.app652020.note
+package com.everydaysolutions.bguneys.everydaysolutions.note
 
 import androidx.appcompat.app.AlertDialog
 import android.content.Context
@@ -17,11 +17,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bguneys.app652020.R
-import com.bguneys.app652020.database.Folder
-import com.bguneys.app652020.database.ProjectRepository
+import com.everydaysolutions.bguneys.everydaysolutions.R
+import com.everydaysolutions.bguneys.everydaysolutions.database.Folder
+import com.everydaysolutions.bguneys.everydaysolutions.database.ProjectRepository
 
-import com.bguneys.app652020.databinding.FragmentFolderListBinding
+import com.everydaysolutions.bguneys.everydaysolutions.databinding.FragmentFolderListBinding
 
 
 class FolderListFragment : Fragment() {
