@@ -1,10 +1,10 @@
-package com.bguneys.app652020.settings
+package com.everydaysolutions.bguneys.everydaysolutions.settings
 
 import android.os.Bundle
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.bguneys.app652020.R
+import com.everydaysolutions.bguneys.everydaysolutions.R
 
 
 class SettingsFragment : PreferenceFragmentCompat() {
