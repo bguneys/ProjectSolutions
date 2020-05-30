@@ -1,4 +1,4 @@
-package com.bguneys.app652020.note
+package com.everydaysolutions.bguneys.everydaysolutions.note
 
 import android.os.Bundle
 import android.view.*
@@ -9,11 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.bguneys.app652020.R
-import com.bguneys.app652020.database.Folder
-import com.bguneys.app652020.database.ProjectRepository
+import com.everydaysolutions.bguneys.everydaysolutions.R
+import com.everydaysolutions.bguneys.everydaysolutions.database.Folder
+import com.everydaysolutions.bguneys.everydaysolutions.database.ProjectRepository
 
-import com.bguneys.app652020.databinding.FragmentNoteBinding
+import com.everydaysolutions.bguneys.everydaysolutions.databinding.FragmentNoteBinding
 
 
 class NoteFragment : Fragment() {
