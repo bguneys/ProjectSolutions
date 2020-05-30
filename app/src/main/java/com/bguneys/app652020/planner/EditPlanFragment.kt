@@ -1,4 +1,4 @@
-package com.bguneys.app652020.planner
+package com.everydaysolutions.bguneys.everydaysolutions.planner
 
 import android.content.Context
 import android.os.Bundle
@@ -15,10 +15,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 
-import com.bguneys.app652020.R
-import com.bguneys.app652020.database.Plan
-import com.bguneys.app652020.database.PlanRepository
-import com.bguneys.app652020.databinding.FragmentEditPlanBinding
+import com.everydaysolutions.bguneys.everydaysolutions.R
+import com.everydaysolutions.bguneys.everydaysolutions.database.Plan
+import com.everydaysolutions.bguneys.everydaysolutions.database.PlanRepository
+import com.everydaysolutions.bguneys.everydaysolutions.databinding.FragmentEditPlanBinding
 
 class EditPlanFragment : Fragment() {
 
