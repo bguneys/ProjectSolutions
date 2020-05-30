@@ -1,4 +1,4 @@
-package com.bguneys.app652020
+package com.everydaysolutions.bguneys.everydaysolutions
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
