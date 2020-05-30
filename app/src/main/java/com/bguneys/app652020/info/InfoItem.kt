@@ -1,4 +1,4 @@
-package com.bguneys.app652020.info
+package com.everydaysolutions.bguneys.everydaysolutions.info
 
 data class InfoItem (
     val id: Int,
