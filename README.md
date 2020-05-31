@@ -17,8 +17,9 @@
 * Room Database library
 * LiveData and ViewModel Lifecycle components
 * Firebase
-* RxJava 
+* RxJava / RxKotlin
 * Retrofit
+* Kotlin Coroutines
 * Navigation component
 * Glide : An image loading and caching library
 * Material Theme
