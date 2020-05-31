@@ -6,13 +6,25 @@
     <Preference
         android:id="@+id/disclaimer"
         android:key="@string/preference_disclaimer"
-        android:title="Disclaimer"
+        android:title="@string/disclaimer_title"
         app:iconSpaceReserved="false" />
 
     <Preference
         android:id="@+id/about"
         android:key="@string/preference_about"
-        android:title="About"
+        android:title="@string/about_title"
+        app:iconSpaceReserved="false" />
+
+    <Preference
+        android:id="@+id/share_app"
+        android:key="@string/share_app"
+        android:title="@string/share_app_title"
+        app:iconSpaceReserved="false" />
+
+    <Preference
+        android:id="@+id/rate_app"
+        android:key="@string/rate_app"
+        android:title="@string/rate_app_title"
         app:iconSpaceReserved="false" />
 
 </PreferenceScreen>

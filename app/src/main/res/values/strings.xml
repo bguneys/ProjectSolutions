@@ -56,4 +56,11 @@
     <string name="no_note_added_yet">No note added yet</string>
     <string name="no_event_added_yet">No event added yet</string>
     <string name="type_title_for_event">Please type a title</string>
+    <string name="disclaimer_title">Disclaimer</string>
+    <string name="about_title">About</string>
+    <string name="share_app">share_app</string>
+    <string name="share_app_title">Share the app</string>
+    <string name="rate_app">rate_app</string>
+    <string name="rate_app_title">Rate the app</string>
+    <string name="share_this_app_with">Share this app with:</string>
 </resources>
